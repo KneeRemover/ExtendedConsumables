@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "extendedconsumables:block/consumable_table" },
+    "facing=east": { "model": "extendedconsumables:block/consumable_table", "y": 90 },
+    "facing=south": { "model": "extendedconsumables:block/consumable_table", "y": 180 },
+    "facing=west": { "model": "extendedconsumables:block/consumable_table", "y": 270 }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "item.extendedconsumables.stingot": "Stingot",
+
+  "block.extendedconsumables.consumable_table": "Consumable Table",
+
+  "effect.extendedconsumables.step_height": "Step Height",
+
+  "extendedconsumables.failed_consumable_craft": "\u00a78<\u00a7aExtendedConsumables\u00a78> \u00a7eCrafting failed. Input and output modifiers did not match.",
+
+  "extendedconsumables.modifiers.title": "Modifiers:",
+
+  "extendedconsumables.modifiers.splash": "\u00a77Splash",
+  "extendedconsumables.modifiers.duration": "\u00a7cDuration",
+  "extendedconsumables.modifiers.strength": "\u00a7eStrength",
+  "extendedconsumables.modifiers.empty": "\u00a78NONE"
+}

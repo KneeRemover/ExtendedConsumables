@@ -1,8 +1,8 @@
 modLoader="javafml" #mandatory
 loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions
-license="GNU 3.0"
+license="GNU GPLv3"
 [[mods]] #mandatory
-modId="extendedconsumables" #mandatory
+modId="extendedconsumables" #mandnnatory
 version="${file.jarVersion}" #mandatory
 displayName="Extended Consumables" #mandatory
 credits="Thanks to picklpie and MrFish for helping with textures, and to Kaupenjoe for their amazing tutorials." #optional
