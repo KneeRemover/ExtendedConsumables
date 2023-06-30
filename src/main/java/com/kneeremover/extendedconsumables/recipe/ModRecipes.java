@@ -1,7 +1,6 @@
 package com.kneeremover.extendedconsumables.recipe;
 
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
-import com.kneeremover.extendedconsumables.screen.ConsumableTableScreen;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

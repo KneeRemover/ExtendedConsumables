@@ -9,12 +9,17 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import org.lwjgl.system.CallbackI;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	private final ResourceLocation id;
@@ -29,12 +34,41 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 
 	@Override
 	public boolean matches(SimpleContainer pContainer, Level pLevel) {
-		boolean zero = recipeItems.get(0).test(pContainer.getItem(0));
-		boolean one = recipeItems.get(1).test(pContainer.getItem(1));
-		boolean two = recipeItems.get(2).isEmpty() || recipeItems.get(2).test(pContainer.getItem(2));
-		boolean three = recipeItems.get(3).isEmpty() || recipeItems.get(3).test(pContainer.getItem(3));
+		List<Integer> recipeItemsList = new LinkedList<>(Arrays.asList(1, 2, 3));
+		List<ItemStack> containedItems = new LinkedList<>(Arrays.asList(pContainer.getItem(1),
+				pContainer.getItem(2), pContainer.getItem(3)));
+		List<Integer> recipeItemsListConsumed = new LinkedList<>();
+		List<ItemStack> containedItemsConsumed = new LinkedList<>();
+
+		// Don't allow modifiers to count for the recipe type. That sentance makes no sense, but its early in the morning and i don't care lol.
+		if (recipeItems.get(0).test(pContainer.getItem(0))) {
+			recipeItemsListConsumed.add(0);
+		}
+		// Loops through each item in the recipe. For each one, loops through each item in the container. If there is a match, removes both the item in the recipe
+		// and the item in the slot from consideration. If every item in the recipe is removed, confirms the recipe.
+		for (Integer target:recipeItemsList) {
+			if (recipeItems.get(target).isEmpty()) { // Ignore empty requirements
+				recipeItemsListConsumed.add(target);
+				continue;
+			}
+			for (ItemStack stack:containedItems) {
+				if (containedItemsConsumed.contains(stack)) { // Skip if the item has already been "consumed"
+					continue;
+				}
+				if (recipeItems.get(target).test(stack)) {
+					containedItemsConsumed.add(stack);
+					recipeItemsListConsumed.add(target);
+					break;
+				}
+			}
+		}
 		boolean mods = ModifierHandler.isModsValid(pContainer.getItem(0), pContainer.getItem(4), pContainer.getItem(5));
-		return zero && one && two && three && mods;
+		return recipeItemsListConsumed.size() == 4 && mods;
+	}
+
+	@Override
+	public NonNullList<Ingredient> getIngredients() {
+		return recipeItems;
 	}
 
 	@Override

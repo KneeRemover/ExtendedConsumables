@@ -5,10 +5,13 @@
       "item": "minecraft:glass_bottle"
     },
     {
-      "item": "minecraft:tnt"
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "minecraft:lava_bucket"
     }
   ],
   "output": {
-    "item": "extendedconsumables:test"
+    "item": "extendedconsumables:last_stand_potion"
   }
 }

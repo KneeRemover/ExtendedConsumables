@@ -21,7 +21,7 @@ public class ModBlocks {
 
 
 	public static final RegistryObject<Block> CONSUMABLE_TABLE = registerBlock("consumable_table",
-			() -> new ConsumableTable(BlockBehaviour.Properties.of(Material.METAL).strength(9f).noOcclusion()), CreativeModeTab.TAB_MISC);
+			() -> new ConsumableTable(BlockBehaviour.Properties.of(Material.WOOD).strength(9f).noOcclusion().destroyTime(80)), CreativeModeTab.TAB_MISC);
 
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
 		RegistryObject<T> toReturn = BLOCKS.register(name, block);

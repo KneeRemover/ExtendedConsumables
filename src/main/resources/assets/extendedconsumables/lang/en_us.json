@@ -1,16 +1,45 @@
 {
-  "item.extendedconsumables.stingot": "Stingot",
+  "death.attack.extendedconsumables.time_ran_out": "%1$s ran out of time",
 
+  "item.extendedconsumables.stingot": "Stingot",
+  "item.extendedconsumables.modifier_placeholder": "Valid Modifier",
+
+  "item.extendedconsumables.step_height_potion": "Step Height Potion",
+  "item.extendedconsumables.last_stand_potion": "Last Stand Potion",
+  "item.extendedconsumables.saturation_overload_potion": "Saturation Overload Potion",
+
+  "item.extendedconsumables.ec_crossbow": "Potion-Ready Crossbow",
+  "item.extendedconsumables.tipped_bolt_item": "Tipped Bolt",
+  "item.extendedconsumables.environmental_apple": "Environmental Apple",
+  "item.extendedconsumables.potionoligerspawnegg": "Potionoliger Spawn Egg",
   "block.extendedconsumables.consumable_table": "Consumable Table",
 
   "effect.extendedconsumables.step_height": "Step Height",
+  "effect.extendedconsumables.last_stand": "Last Stand",
+  "effect.extendedconsumables.saturation_overload": "Saturation Overload",
+
+  "item_description.extendedconsumables.modifier_placeholder": "For potions, this is either nothing, glowstone dust (amplifier), redstone dust (duration), or gunpowder (splash). For food, gunpowder is replaced by steak (nourishing).",
+  "item_description.extendedconsumables.last_stand": "Very temporary immortality, followed by death.",
+  "item_description.extendedconsumables.step_height": "Blocks are slabs!",
+  "item_description.extendedconsumables.environmental_apple": "Grants immunity to most types of environmental damage. Comes with water breathing, fire resistance, and slow falling.",
+  "item_description.extendedconsumables.saturation_overload_potion": "Uncaps your saturation. When you are at max food and holding something edible, your hunger is temporarily reduced to allow you to eat it. Saturation over the normal maximum is saved when the potion runs out, but can't be used.",
+  "item_description.extendedconsumables.gunpowder": "Turns a potion into it's splash variant. Splashing a potion onto arrows will turn them into tipped bolts, to be used with a Bolt-Ready Crossbow. Up to five stacks of arrows can be converted at once. Splashing a potion onto tipped bolts will add the effect, so you can have multiple effects per bolt. Each effect can only be added once. Some potions cannot become splash potions, which will be noted in a potion's tooltip.",
+  "item_description.extendedconsumables.redstone": "Increases the duration of a potion",
+  "item_description.extendedconsumables.glowstone": "Increases the power of a potion. Some potion's power cannot be amplified, which you can see in their tooltip.",
 
   "extendedconsumables.failed_consumable_craft": "\u00a78<\u00a7aExtendedConsumables\u00a78> \u00a7eCrafting failed. Input and output modifiers did not match.",
 
-  "extendedconsumables.modifiers.title": "Modifiers:",
+  "description.extendedconsumables.step_height": "\u00a7aIt's just better auto jump. Each level allows you to step up 1 more block than usual, allowing you to quickly cross rough terrain.",
+  "description.extendedconsumables.saturation_overload": "\u00a7aUncaps your saturation. When the effect runs out, saturation over max is stored until you get the effect again. Stored saturation can't be used.",
+  "description.extendedconsumables.last_stand": "\u00a7a...",
 
-  "extendedconsumables.modifiers.splash": "\u00a77Splash",
-  "extendedconsumables.modifiers.duration": "\u00a7cDuration",
-  "extendedconsumables.modifiers.strength": "\u00a7eStrength",
-  "extendedconsumables.modifiers.empty": "\u00a78NONE"
+  "description.warn.extendedconsumables.only_one_level": "\u00a7cCannot be amplified",
+  "description.warn.extendedconsumables.cannot_splash": "\u00a7cCannot splash",
+
+  "modifiers.extendedconsumables.title": "\u00a7eModifiers:",
+  "modifiers.extendedconsumables.splash": "\u00a77Splash",
+  "modifiers.extendedconsumables.duration": "\u00a7cDuration",
+  "modifiers.extendedconsumables.strength": "\u00a7eStrength",
+  "modifiers.extendedconsumables.empty": "\u00a78NONE",
+  "modifiers.extendedconsumables.nourishing": "\u00a7bNourishing"
 }

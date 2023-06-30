@@ -12,11 +12,6 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -28,7 +23,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -38,11 +32,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvider {
 	private final ItemStackHandler itemHandler = new ItemStackHandler(8) {
@@ -178,7 +169,7 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 		return net.minecraftforge.common.ForgeHooks.getBurnTime(entity.itemHandler.getStackInSlot(6), RecipeType.SMELTING) >= 1600;
 	}
 
-	private static void craftItem(ConsumableTableBlockEntity entity) {
+	public static void craftItem(ConsumableTableBlockEntity entity) {
 		Level level = entity.level;
 		SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
 		for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
@@ -190,8 +181,8 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 
 		if (match.isPresent()) {
 			// Create the output item
-			Item modOne = null;
-			Item modTwo = null;
+			Item modOne;
+			Item modTwo;
 
 			modOne = entity.itemHandler.getStackInSlot(4).getItem();
 			modTwo = entity.itemHandler.getStackInSlot(5).getItem();
