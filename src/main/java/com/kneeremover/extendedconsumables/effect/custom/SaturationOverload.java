@@ -1,5 +1,6 @@
-package com.kneeremover.extendedconsumables.effect;
+package com.kneeremover.extendedconsumables.effect.custom;
 
+import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.effect.capabilities.PlayerSaturationOverloadProvider;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -9,7 +10,7 @@ import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;
 
 public class SaturationOverload extends MobEffect {
-	protected SaturationOverload(MobEffectCategory pCategory, int pColor) {
+	public SaturationOverload(MobEffectCategory pCategory, int pColor) {
 		super(pCategory, pColor);
 	}
 
@@ -20,6 +21,7 @@ public class SaturationOverload extends MobEffect {
 		if (pLivingEntity instanceof Player) {
 			Player player = (Player) pLivingEntity;
 			player.getCapability(PlayerSaturationOverloadProvider.PLAYER_SATURATION_OVERLOAD).ifPresent(sat -> {
+				ExtendedConsumables.LOGGER.info("Overload: " + sat.getOverload());
 				FoodData foodData = player.getFoodData();
 				sat.subOverload(20 - foodData.getSaturationLevel());
 				foodData.setSaturation(20);

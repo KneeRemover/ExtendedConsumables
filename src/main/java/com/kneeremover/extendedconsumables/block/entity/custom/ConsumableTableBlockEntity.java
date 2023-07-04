@@ -203,7 +203,7 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 				BlockPos p = entity.getBlockPos();
 				Player player = entity.level.getNearestPlayer(p.getX(), p.getY(), p.getZ(), 10, false);
 				if (player != null) {
-					player.sendMessage(new TranslatableComponent("extendedconsumables.failed_consumable_craft"), new UUID(1, 1));
+					player.sendMessage(new TranslatableComponent("extendedconsumables.failed_consumable_craft"), UUID.randomUUID());
 				}
 				return;
 			}

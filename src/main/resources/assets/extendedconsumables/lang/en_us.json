@@ -7,6 +7,9 @@
   "item.extendedconsumables.step_height_potion": "Step Height Potion",
   "item.extendedconsumables.last_stand_potion": "Last Stand Potion",
   "item.extendedconsumables.saturation_overload_potion": "Saturation Overload Potion",
+  "item.extendedconsumables.radiant_flames_potion": "Radiant Flames Potion",
+
+  "item.extendedconsumables.scroll_friendship": "Scroll of Friendship ",
 
   "item.extendedconsumables.ec_crossbow": "Potion-Ready Crossbow",
   "item.extendedconsumables.tipped_bolt_item": "Tipped Bolt",
@@ -17,6 +20,7 @@
   "effect.extendedconsumables.step_height": "Step Height",
   "effect.extendedconsumables.last_stand": "Last Stand",
   "effect.extendedconsumables.saturation_overload": "Saturation Overload",
+  "effect.extendedconsumables.radiant_flames": "Radiant Flames",
 
   "item_description.extendedconsumables.modifier_placeholder": "For potions, this is either nothing, glowstone dust (amplifier), redstone dust (duration), or gunpowder (splash). For food, gunpowder is replaced by steak (nourishing).",
   "item_description.extendedconsumables.last_stand": "Very temporary immortality, followed by death.",
@@ -32,9 +36,13 @@
   "description.extendedconsumables.step_height": "\u00a7aIt's just better auto jump. Each level allows you to step up 1 more block than usual, allowing you to quickly cross rough terrain.",
   "description.extendedconsumables.saturation_overload": "\u00a7aUncaps your saturation. When the effect runs out, saturation over max is stored until you get the effect again. Stored saturation can't be used.",
   "description.extendedconsumables.last_stand": "\u00a7a...",
-
+  "description.extendedconsumables.scroll_friendship": "\u00a7aRight click an player to declare them a friend. Harmful radiant potions no longer affect them, while helpful ones now will. Some scrolls interact with this.",
+  "description.extendedconsumables.radiant_flames": "\u00a7aIgnites all enemies within a 4 (+2 per level) block radius for 3 seconds. Enemies are all monsters or players that you have not become friends with using the Scroll of Friendship. May not interact correctly with other mods.",
   "description.warn.extendedconsumables.only_one_level": "\u00a7cCannot be amplified",
   "description.warn.extendedconsumables.cannot_splash": "\u00a7cCannot splash",
+
+  "extendedconsumables.info.trucelist.truceIntro": "\u00a78<\u00a7aExtendedConsumables\u00a78> \u00a7eTruces",
+  "extendedconsumables.info.trucelist.offline": "\u00a77 - Offline :(",
 
   "modifiers.extendedconsumables.title": "\u00a7eModifiers:",
   "modifiers.extendedconsumables.splash": "\u00a77Splash",

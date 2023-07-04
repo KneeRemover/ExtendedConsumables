@@ -33,6 +33,7 @@ public class TippedBoltItem extends Item {
 		definedEffects.put(ModEffects.LAST_STAND.get().getColor(), ModEffects.LAST_STAND.get());
 		definedEffects.put(ModEffects.STEP_HEIGHT.get().getColor(), ModEffects.STEP_HEIGHT.get());
 		definedEffects.put(ModEffects.SATURATION_OVERLOAD.get().getColor(), ModEffects.SATURATION_OVERLOAD.get());
+		definedEffects.put(ModEffects.RADIANT_FLAMES.get().getColor(), ModEffects.RADIANT_FLAMES.get());
 
 		CompoundTag tag = pStack.getOrCreateTag();
 		int[] effectIDs = tag.getIntArray("extendedconsumables.effectIDs");

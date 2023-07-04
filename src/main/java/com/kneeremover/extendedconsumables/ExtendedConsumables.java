@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 @Mod(ExtendedConsumables.MOD_ID)
 public class ExtendedConsumables {
     public static final String MOD_ID = "extendedconsumables";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public ExtendedConsumables() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();

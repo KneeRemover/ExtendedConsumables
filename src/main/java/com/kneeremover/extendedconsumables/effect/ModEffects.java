@@ -1,6 +1,7 @@
 package com.kneeremover.extendedconsumables.effect;
 
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
+import com.kneeremover.extendedconsumables.effect.custom.*;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,6 +14,7 @@ public class ModEffects {
 
 	public static final RegistryObject<SaturationOverload> SATURATION_OVERLOAD = MOB_EFFECTS.register("saturation_overload", () -> new SaturationOverload(MobEffectCategory.BENEFICIAL, 16751415));
 	public static final RegistryObject<StepHeight> STEP_HEIGHT = MOB_EFFECTS.register("step_height", () -> new StepHeight(MobEffectCategory.BENEFICIAL, 6225872));
+	public static final RegistryObject<RadiantFlames> RADIANT_FLAMES = MOB_EFFECTS.register("radiant_flames", () -> new RadiantFlames(MobEffectCategory.BENEFICIAL, 16734464));
 	public static final RegistryObject<LastStand> LAST_STAND = MOB_EFFECTS.register("last_stand", () -> new LastStand(MobEffectCategory.NEUTRAL, 255));
 
 	public static void register(IEventBus eventBus) {

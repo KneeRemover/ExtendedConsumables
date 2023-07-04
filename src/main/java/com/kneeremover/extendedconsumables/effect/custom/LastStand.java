@@ -1,4 +1,4 @@
-package com.kneeremover.extendedconsumables.effect;
+package com.kneeremover.extendedconsumables.effect.custom;
 
 import com.kneeremover.extendedconsumables.entity.DamageSources;
 import net.minecraft.world.effect.MobEffect;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LastStand extends MobEffect {
-	protected LastStand(MobEffectCategory pCategory, int pColor) {
+	public LastStand(MobEffectCategory pCategory, int pColor) {
 		super(pCategory, pColor);
 	}
 

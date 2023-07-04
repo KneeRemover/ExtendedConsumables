@@ -16,6 +16,10 @@ public class PlayerSaturationOverload {
 		overload -= toSub;
 	}
 
+	public void zeroOverload() {
+		overload = 0;
+	}
+
 	public void copyFrom(PlayerSaturationOverload source) {
 		this.overload = source.overload;
 	}

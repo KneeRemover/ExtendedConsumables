@@ -22,8 +22,11 @@ public class ModItems {
 	public static final RegistryObject<Item> STEP_HEIGHT_POTION = ITEMS.register("step_height_potion", () -> new StepHeightPotion(new Item.Properties()));
 	public static final RegistryObject<Item> LAST_STAND_POTION = ITEMS.register("last_stand_potion", () -> new LastStandPotion(new Item.Properties()));
 	public static final RegistryObject<Item> SATURATION_OVERLOAD_POTION = ITEMS.register("saturation_overload_potion", () -> new SaturationOverloadPotion(new Item.Properties()));
+	public static final RegistryObject<Item> RADIANT_FLAMES_POTION = ITEMS.register("radiant_flames_potion", () -> new RadiantFlamesPotion(new Item.Properties()));
 
 	public static final RegistryObject<Item> ENVIRONMENTAL_APPLE = ITEMS.register("environmental_apple", () -> new EnvironmentalApple(new Item.Properties()));
+
+	public static final RegistryObject<Item> FRIENDHSIP_SCROLL = ITEMS.register("scroll_friendship", () -> new ScrollOfFriendship(new Item.Properties()));
 
 	public static final RegistryObject<Item> POTIONOLIGER_SPAWN_EGG = ITEMS.register("potionoligerspawnegg",
 			() -> new ForgeSpawnEggItem(ModEntities.POTIONOLIGER,102- 0 -153,153-153-153, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));

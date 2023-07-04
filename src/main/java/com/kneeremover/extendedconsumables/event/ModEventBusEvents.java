@@ -1,6 +1,7 @@
 package com.kneeremover.extendedconsumables.event;
 
 import com.kneeremover.extendedconsumables.effect.capabilities.PlayerSaturationOverload;
+import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTruces;
 import com.kneeremover.extendedconsumables.recipe.ConsumableTableRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -17,5 +18,6 @@ public class ModEventBusEvents {
 	@SubscribeEvent
 	public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
 		event.register(PlayerSaturationOverload.class);
+		event.register(PlayerTruces.class);
 	}
 }
