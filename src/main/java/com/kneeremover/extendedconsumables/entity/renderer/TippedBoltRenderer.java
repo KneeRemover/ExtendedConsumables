@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class TippedBoltRenderer extends ArrowRenderer<TippedBolt> {
@@ -17,7 +18,7 @@ public class TippedBoltRenderer extends ArrowRenderer<TippedBolt> {
 	/**
 	 * Returns the location of an entity's texture.
 	 */
-	public ResourceLocation getTextureLocation(TippedBolt pEntity) {
+	public @NotNull ResourceLocation getTextureLocation(@NotNull TippedBolt pEntity) {
 
 		return new ResourceLocation(ExtendedConsumables.MOD_ID, "textures/entity/projectile/arrowtexture.png");
 	}

@@ -20,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Arrays;
@@ -51,7 +52,7 @@ public class SplashPotion extends ThrowableItemProjectile implements ItemSupplie
 	}
 
 	@Override
-	protected void onHit(HitResult pResult) {
+	protected void onHit(@NotNull HitResult pResult) {
 		super.onHit(pResult);
 		if (!this.level.isClientSide) {
 			if (mobEffect != null) {
@@ -84,7 +85,7 @@ public class SplashPotion extends ThrowableItemProjectile implements ItemSupplie
 					int[] ids = tag.getIntArray("extendedconsumables.effectIDs");
 					int[] amplifiers = tag.getIntArray("extendedconsumables.amplifiers");
 					int[] durations = tag.getIntArray("extendedconsumables.durations");
-					if (!Arrays.stream(ids).anyMatch(i -> i == this.mobEffect.getColor())) {
+					if (Arrays.stream(ids).noneMatch(i -> i == this.mobEffect.getColor())) {
 						int[] idsToReturn = new int[ids.length + 1];
 						int[] amplifiersToReturn = new int[amplifiers.length + 1];
 						int[] durationsToReturn = new int[durations.length + 1];
@@ -138,7 +139,7 @@ public class SplashPotion extends ThrowableItemProjectile implements ItemSupplie
 	}
 
 	@Override
-	protected Item getDefaultItem() {
+	protected @NotNull Item getDefaultItem() {
 		return ModItems.STEP_HEIGHT_POTION.get();
 	}
 }

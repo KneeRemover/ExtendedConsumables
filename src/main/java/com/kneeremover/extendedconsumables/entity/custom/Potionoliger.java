@@ -20,6 +20,7 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 public class Potionoliger extends AbstractIllager implements RangedAttackMob {
 
@@ -30,7 +31,8 @@ private static final EntityDataAccessor<Boolean> DATA_USING_ITEM = SynchedEntity
 		return this.getEntityData().get(DATA_USING_ITEM);
 	}
 
-	public void performRangedAttack(LivingEntity pTarget, float pDistanceFactor) {
+	@SuppressWarnings("unused")
+	public void performRangedAttack(@NotNull LivingEntity pTarget, float pDistanceFactor) {
 		if (!this.isDrinkingPotion()) {
 			Vec3 vec3 = pTarget.getDeltaMovement();
 			double d0 = pTarget.getX() + vec3.x - this.getX();
@@ -47,7 +49,7 @@ private static final EntityDataAccessor<Boolean> DATA_USING_ITEM = SynchedEntity
 	public Potionoliger(EntityType<? extends Potionoliger> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
-	public boolean isAlliedTo(Entity pEntity) {
+	public boolean isAlliedTo(@NotNull Entity pEntity) {
 		if (super.isAlliedTo(pEntity)) {
 			return true;
 		} else if (pEntity instanceof LivingEntity && ((LivingEntity)pEntity).getMobType() == MobType.ILLAGER) {
@@ -56,13 +58,14 @@ private static final EntityDataAccessor<Boolean> DATA_USING_ITEM = SynchedEntity
 			return false;
 		}
 	}
-	public SoundEvent getCelebrateSound() {
+	public @NotNull SoundEvent getCelebrateSound() {
 		return SoundEvents.VINDICATOR_CELEBRATE;
 	}
 
 	public void applyRaidBuffs(int pWave, boolean pUnusedFalse) {
 	}
 
+	@SuppressWarnings("unused")
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 30).add(Attributes.MOVEMENT_SPEED, 1D);
 }}

@@ -12,7 +12,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PlayerSaturationOverloadProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-	public static Capability<PlayerSaturationOverload> PLAYER_SATURATION_OVERLOAD = CapabilityManager.get(new CapabilityToken<PlayerSaturationOverload>() {	});
+	public static final Capability<PlayerSaturationOverload> PLAYER_SATURATION_OVERLOAD = CapabilityManager.get(new CapabilityToken<>() {
+	});
 
 	private PlayerSaturationOverload saturationOverload = null;
 	private final LazyOptional<PlayerSaturationOverload> optional = LazyOptional.of(this::createPlayerSaturationOverload);

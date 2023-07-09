@@ -1,20 +1,13 @@
 package com.kneeremover.extendedconsumables.item.custom;
 
-import com.kneeremover.extendedconsumables.ExtendedConsumables;
-import com.kneeremover.extendedconsumables.ModifierHandler;
 import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTrucesProvider;
-import com.kneeremover.extendedconsumables.entity.custom.projectile.SplashPotion;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -26,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 
@@ -36,7 +28,7 @@ public class ScrollOfFriendship extends Item { // The friends we made along the 
 	}
 
 	@Override
-	public InteractionResult interactLivingEntity(ItemStack pStack, Player pPlayer, LivingEntity pInteractionTarget, InteractionHand pUsedHand) {
+	public @NotNull InteractionResult interactLivingEntity(@NotNull ItemStack pStack, Player pPlayer, @NotNull LivingEntity pInteractionTarget, @NotNull InteractionHand pUsedHand) {
 		pPlayer.getCapability(PlayerTrucesProvider.PLAYER_TRUCES).ifPresent(truces -> {
 			if (pInteractionTarget.getType() == EntityType.PLAYER) {
 				if (truces.getTruces().contains(pInteractionTarget.getStringUUID())) {
@@ -51,7 +43,7 @@ public class ScrollOfFriendship extends Item { // The friends we made along the 
 
 	@NotNull
 	@Override
-	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, @NotNull InteractionHand pHand) {
+	public InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pHand) {
 		if (!pLevel.isClientSide) {
 			pPlayer.getCapability(PlayerTrucesProvider.PLAYER_TRUCES).ifPresent(truces -> {
 				pPlayer.sendMessage(new TranslatableComponent("extendedconsumables.info.trucelist.truceIntro"), UUID.randomUUID());
@@ -70,7 +62,7 @@ public class ScrollOfFriendship extends Item { // The friends we made along the 
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+	public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
 		if (Screen.hasShiftDown()) {
 			pTooltipComponents.add(new TranslatableComponent("description.extendedconsumables.scroll_friendship"));
 		} else {

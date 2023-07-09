@@ -1,23 +1,19 @@
 package com.kneeremover.extendedconsumables.effect.custom;
 
 import com.kneeremover.extendedconsumables.effect.RadianceUtils;
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerSaturationOverloadProvider;
 import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTrucesProvider;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class RadiantFlames extends MobEffect {
-	public RadiantFlames(MobEffectCategory pCategory, int pColor) {
+	public RadiantFlames(MobEffectCategory pCategory, int pColor) { // Flames isn't a potion effect, so unfortunately I can't use the Abstract.
 		super(pCategory, pColor);
 	}
 

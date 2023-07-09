@@ -1,0 +1,20 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:sunflower"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:radiant_slowness_potion"
+  }
+}

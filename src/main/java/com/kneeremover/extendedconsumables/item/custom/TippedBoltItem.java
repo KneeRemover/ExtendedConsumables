@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -28,12 +29,14 @@ public class TippedBoltItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
 		HashMap<Integer, MobEffect> definedEffects = new HashMap<>();
 		definedEffects.put(ModEffects.LAST_STAND.get().getColor(), ModEffects.LAST_STAND.get());
 		definedEffects.put(ModEffects.STEP_HEIGHT.get().getColor(), ModEffects.STEP_HEIGHT.get());
 		definedEffects.put(ModEffects.SATURATION_OVERLOAD.get().getColor(), ModEffects.SATURATION_OVERLOAD.get());
 		definedEffects.put(ModEffects.RADIANT_FLAMES.get().getColor(), ModEffects.RADIANT_FLAMES.get());
+		definedEffects.put(ModEffects.RADIANT_REGEN.get().getColor(), ModEffects.RADIANT_REGEN.get());
+		definedEffects.put(ModEffects.RADIANT_SLOWNESS.get().getColor(), ModEffects.RADIANT_SLOWNESS.get());
 
 		CompoundTag tag = pStack.getOrCreateTag();
 		int[] effectIDs = tag.getIntArray("extendedconsumables.effectIDs");

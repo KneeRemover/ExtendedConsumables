@@ -31,16 +31,22 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Predicate;
 
+@SuppressWarnings("deprecation")
 public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
+	@SuppressWarnings("unused")
 	private static final String TAG_CHARGED = "Charged";
+	@SuppressWarnings("unused")
 	private static final String TAG_CHARGED_PROJECTILES = "ChargedProjectiles";
+	@SuppressWarnings("unused")
 	private static final int MAX_CHARGE_DURATION = 25;
+	@SuppressWarnings("unused")
 	public static final int DEFAULT_RANGE = 8;
 	/**
 	 * Set to {@code true} when the crossbow is 20% charged.
@@ -50,24 +56,28 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	 * Set to {@code true} when the crossbow is 50% charged.
 	 */
 	private boolean midLoadSoundPlayed = false;
+	@SuppressWarnings("unused")
 	private static final float START_SOUND_PERCENT = 0.2F;
+	@SuppressWarnings("unused")
 	private static final float MID_SOUND_PERCENT = 0.5F;
+	@SuppressWarnings("unused")
 	private static final float ARROW_POWER = 3.15F;
+	@SuppressWarnings("unused")
 	private static final float FIREWORK_POWER = 1.6F;
 
 	public ECCrossbow(Item.Properties pProperties) {
 		super(pProperties);
 	}
 
-	public Predicate<ItemStack> getSupportedHeldProjectiles() {
+	public @NotNull Predicate<ItemStack> getSupportedHeldProjectiles() {
 		return ARROW_OR_FIREWORK.or((itemStack) -> itemStack.is(ModItems.TIPPED_BOLT_ITEM.get()));
 	}
 
-	public Predicate<ItemStack> getAllSupportedProjectiles() {
+	public @NotNull Predicate<ItemStack> getAllSupportedProjectiles() {
 		return ARROW_ONLY;
 	}
 
-	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
+	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level pLevel, Player pPlayer, @NotNull InteractionHand pHand) {
 		ItemStack itemstack = pPlayer.getItemInHand(pHand);
 		if (isCharged(itemstack)) {
 			performShooting(pLevel, pPlayer, pHand, itemstack, getShootingPower(itemstack), 1.0F);
@@ -93,13 +103,13 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	/**
 	 * Called when the player stops using an Item (stops holding the right mouse button).
 	 */
-	public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
+	public void releaseUsing(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pEntityLiving, int pTimeLeft) {
 		int i = this.getUseDuration(pStack) - pTimeLeft;
 		float f = getPowerForTime(i, pStack);
 		if (f >= 1.0F && !isCharged(pStack) && tryLoadProjectiles(pEntityLiving, pStack)) {
 			setCharged(pStack, true);
 			SoundSource soundsource = pEntityLiving instanceof Player ? SoundSource.PLAYERS : SoundSource.HOSTILE;
-			pLevel.playSound((Player) null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
+			pLevel.playSound(null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(), SoundEvents.CROSSBOW_LOADING_END, soundsource, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F);
 		}
 
 	}
@@ -201,9 +211,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	}
 
 	public static boolean containsChargedProjectile(ItemStack pCrossbowStack, Item pAmmoItem) {
-		return getChargedProjectiles(pCrossbowStack).stream().anyMatch((p_40870_) -> {
-			return p_40870_.is(pAmmoItem);
-		});
+		return getChargedProjectiles(pCrossbowStack).stream().anyMatch((p_40870_) -> p_40870_.is(pAmmoItem));
 	}
 
 	private static void shootProjectile(Level pLevel, LivingEntity pShooter, InteractionHand pHand, ItemStack pCrossbowStack, ItemStack pAmmoStack, float pSoundPitch, boolean pIsCreativeMode, float pVelocity, float pInaccuracy, float pProjectileAngle) {
@@ -225,8 +233,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 				}
 			}
 
-			if (pShooter instanceof CrossbowAttackMob) {
-				CrossbowAttackMob crossbowattackmob = (CrossbowAttackMob) pShooter;
+			if (pShooter instanceof CrossbowAttackMob crossbowattackmob) {
 				crossbowattackmob.shootCrossbowProjectile(crossbowattackmob.getTarget(), pCrossbowStack, projectile, pProjectileAngle);
 			} else {
 				Vec3 vec31 = pShooter.getUpVector(1.0F);
@@ -234,14 +241,12 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 				Vec3 vec3 = pShooter.getViewVector(1.0F);
 				Vector3f vector3f = new Vector3f(vec3);
 				vector3f.transform(quaternion);
-				projectile.shoot((double) vector3f.x(), (double) vector3f.y(), (double) vector3f.z(), pVelocity, pInaccuracy);
+				projectile.shoot(vector3f.x(), vector3f.y(), vector3f.z(), pVelocity, pInaccuracy);
 			}
 
-			pCrossbowStack.hurtAndBreak(IsFireworkRocket ? 3 : 1, pShooter, (p_40858_) -> {
-				p_40858_.broadcastBreakEvent(pHand);
-			});
+			pCrossbowStack.hurtAndBreak(IsFireworkRocket ? 3 : 1, pShooter, (p_40858_) -> p_40858_.broadcastBreakEvent(pHand));
 			pLevel.addFreshEntity(projectile);
-			pLevel.playSound((Player) null, pShooter.getX(), pShooter.getY(), pShooter.getZ(), SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 1.0F, pSoundPitch);
+			pLevel.playSound(null, pShooter.getX(), pShooter.getY(), pShooter.getZ(), SoundEvents.CROSSBOW_SHOOT, SoundSource.PLAYERS, 1.0F, pSoundPitch);
 		}
 	}
 
@@ -311,12 +316,8 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 		return 1.0F / (pRandom.nextFloat() * 0.5F + 1.8F) + f;
 	}
 
-	/**
-	 * Called after {@plainlink #fireProjectiles} to clear the charged projectile and to update the player advancements.
-	 */
 	private static void onCrossbowShot(Level pLevel, LivingEntity pShooter, ItemStack pCrossbowStack) {
-		if (pShooter instanceof ServerPlayer) {
-			ServerPlayer serverplayer = (ServerPlayer) pShooter;
+		if (pShooter instanceof ServerPlayer serverplayer) {
 			if (!pLevel.isClientSide) {
 				CriteriaTriggers.SHOT_CROSSBOW.trigger(serverplayer, pCrossbowStack);
 			}
@@ -330,7 +331,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	/**
 	 * Called as the item is being used by an entity.
 	 */
-	public void onUseTick(Level pLevel, LivingEntity pLivingEntity, ItemStack pStack, int pCount) {
+	public void onUseTick(Level pLevel, @NotNull LivingEntity pLivingEntity, @NotNull ItemStack pStack, int pCount) {
 		if (!pLevel.isClientSide) {
 			int i = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.QUICK_CHARGE, pStack);
 			SoundEvent soundevent = this.getStartSound(i);
@@ -343,12 +344,12 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 
 			if (f >= 0.2F && !this.startSoundPlayed) {
 				this.startSoundPlayed = true;
-				pLevel.playSound((Player) null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), soundevent, SoundSource.PLAYERS, 0.5F, 1.0F);
+				pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), soundevent, SoundSource.PLAYERS, 0.5F, 1.0F);
 			}
 
 			if (f >= 0.5F && soundevent1 != null && !this.midLoadSoundPlayed) {
 				this.midLoadSoundPlayed = true;
-				pLevel.playSound((Player) null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), soundevent1, SoundSource.PLAYERS, 0.5F, 1.0F);
+				pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), soundevent1, SoundSource.PLAYERS, 0.5F, 1.0F);
 			}
 		}
 
@@ -357,7 +358,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	/**
 	 * How long it takes to use or consume an item
 	 */
-	public int getUseDuration(ItemStack pStack) {
+	public int getUseDuration(@NotNull ItemStack pStack) {
 		return getChargeDuration(pStack) + 3;
 	}
 
@@ -372,7 +373,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	/**
 	 * returns the action that specifies what animation to play when the items is being used
 	 */
-	public UseAnim getUseAnimation(ItemStack pStack) {
+	public @NotNull UseAnim getUseAnimation(@NotNull ItemStack pStack) {
 		return UseAnim.CROSSBOW;
 	}
 
@@ -401,7 +402,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 	/**
 	 * allows items to add custom lines of information to the mouseover description
 	 */
-	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+	public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltip, @NotNull TooltipFlag pFlag) {
 		List<ItemStack> list = getChargedProjectiles(pStack);
 		if (isCharged(pStack) && !list.isEmpty()) {
 			ItemStack itemstack = list.get(0);
@@ -410,9 +411,7 @@ public class ECCrossbow extends ProjectileWeaponItem implements Vanishable {
 				List<Component> list1 = Lists.newArrayList();
 				Items.FIREWORK_ROCKET.appendHoverText(itemstack, pLevel, list1, pFlag);
 				if (!list1.isEmpty()) {
-					for (int i = 0; i < list1.size(); ++i) {
-						list1.set(i, (new TextComponent("  ")).append(list1.get(i)).withStyle(ChatFormatting.GRAY));
-					}
+					list1.replaceAll(pSibling -> (new TextComponent("  ")).append(pSibling).withStyle(ChatFormatting.GRAY));
 
 					pTooltip.addAll(list1);
 				}

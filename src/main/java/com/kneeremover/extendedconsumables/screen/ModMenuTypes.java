@@ -15,7 +15,7 @@ public class ModMenuTypes {
 
 	public static final RegistryObject<MenuType<ConsumableTableMenu>> CONSUMABLE_TABLE_MENU = registerMenuType(ConsumableTableMenu::new, "consumable_table_menu");
 
-	private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
+	private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, @SuppressWarnings("SameParameterValue") String name) {
 		return MENUS.register(name, () -> IForgeMenuType.create(factory));
 	}
 

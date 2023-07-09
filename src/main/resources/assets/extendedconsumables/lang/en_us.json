@@ -1,32 +1,36 @@
 {
   "death.attack.extendedconsumables.time_ran_out": "%1$s ran out of time",
 
-  "item.extendedconsumables.stingot": "Stingot",
   "item.extendedconsumables.modifier_placeholder": "Valid Modifier",
+
+  "itemGroup.extendedconsumables.potiontab": "Extended Potions",
+  "itemGroup.extendedconsumables.foodtab": "Extended Food",
+  "itemGroup.extendedconsumables.scrolltab": "Extended Scrolls",
+  "itemGroup.extendedconsumables.othertab": "Extended Others",
 
   "item.extendedconsumables.step_height_potion": "Step Height Potion",
   "item.extendedconsumables.last_stand_potion": "Last Stand Potion",
   "item.extendedconsumables.saturation_overload_potion": "Saturation Overload Potion",
   "item.extendedconsumables.radiant_flames_potion": "Radiant Flames Potion",
+  "item.extendedconsumables.radiant_regen_potion": "Radiant Regeneration Potion",
+  "item.extendedconsumables.radiant_slowness_potion": "Radiant Slowness Potion",
 
-  "item.extendedconsumables.scroll_friendship": "Scroll of Friendship ",
+  "item.extendedconsumables.scroll_friendship": "Scroll of Friendship",
 
   "item.extendedconsumables.ec_crossbow": "Potion-Ready Crossbow",
   "item.extendedconsumables.tipped_bolt_item": "Tipped Bolt",
   "item.extendedconsumables.environmental_apple": "Environmental Apple",
   "item.extendedconsumables.potionoligerspawnegg": "Potionoliger Spawn Egg",
+  "item.extendedconsumables.pocket_dimension_analyzer": "Pocket Dimension Analyzer",
   "block.extendedconsumables.consumable_table": "Consumable Table",
 
   "effect.extendedconsumables.step_height": "Step Height",
   "effect.extendedconsumables.last_stand": "Last Stand",
   "effect.extendedconsumables.saturation_overload": "Saturation Overload",
   "effect.extendedconsumables.radiant_flames": "Radiant Flames",
+  "effect.extendedconsumables.radiant_regen": "Radiant Regen",
+  "effect.extendedconsumables.radiant_slowness": "Radiant Slowness",
 
-  "item_description.extendedconsumables.modifier_placeholder": "For potions, this is either nothing, glowstone dust (amplifier), redstone dust (duration), or gunpowder (splash). For food, gunpowder is replaced by steak (nourishing).",
-  "item_description.extendedconsumables.last_stand": "Very temporary immortality, followed by death.",
-  "item_description.extendedconsumables.step_height": "Blocks are slabs!",
-  "item_description.extendedconsumables.environmental_apple": "Grants immunity to most types of environmental damage. Comes with water breathing, fire resistance, and slow falling.",
-  "item_description.extendedconsumables.saturation_overload_potion": "Uncaps your saturation. When you are at max food and holding something edible, your hunger is temporarily reduced to allow you to eat it. Saturation over the normal maximum is saved when the potion runs out, but can't be used.",
   "item_description.extendedconsumables.gunpowder": "Turns a potion into it's splash variant. Splashing a potion onto arrows will turn them into tipped bolts, to be used with a Bolt-Ready Crossbow. Up to five stacks of arrows can be converted at once. Splashing a potion onto tipped bolts will add the effect, so you can have multiple effects per bolt. Each effect can only be added once. Some potions cannot become splash potions, which will be noted in a potion's tooltip.",
   "item_description.extendedconsumables.redstone": "Increases the duration of a potion",
   "item_description.extendedconsumables.glowstone": "Increases the power of a potion. Some potion's power cannot be amplified, which you can see in their tooltip.",
@@ -34,15 +38,22 @@
   "extendedconsumables.failed_consumable_craft": "\u00a78<\u00a7aExtendedConsumables\u00a78> \u00a7eCrafting failed. Input and output modifiers did not match.",
 
   "description.extendedconsumables.step_height": "\u00a7aIt's just better auto jump. Each level allows you to step up 1 more block than usual, allowing you to quickly cross rough terrain.",
-  "description.extendedconsumables.saturation_overload": "\u00a7aUncaps your saturation. When the effect runs out, saturation over max is stored until you get the effect again. Stored saturation can't be used.",
-  "description.extendedconsumables.last_stand": "\u00a7a...",
-  "description.extendedconsumables.scroll_friendship": "\u00a7aRight click an player to declare them a friend. Harmful radiant potions no longer affect them, while helpful ones now will. Some scrolls interact with this.",
-  "description.extendedconsumables.radiant_flames": "\u00a7aIgnites all enemies within a 4 (+2 per level) block radius for 3 seconds. Enemies are all monsters or players that you have not become friends with using the Scroll of Friendship. May not interact correctly with other mods.",
+  "description.extendedconsumables.saturation_overload": "\u00a7aUncaps your saturation. When the effect runs out, saturation over max is stored until you get the effect again. Stored saturation can't be used. Extra saturation is only saved on death if you have KeepInventory enabled, because game balance.",
+  "description.extendedconsumables.last_stand": "\u00a7aVery temporary immortality, followed by death.",
+  "description.extendedconsumables.environmental_apple": "\u00a7aGives water breathing, fire resistance, and slow falling for one minute. NOTE: Despite requiring a cactus, this potion will not protect you from them.",
+  "description.extendedconsumables.scroll_friendship": "\u00a7eNot Consumable\n\u00a7aRight click an player to declare them a friend. Harmful radiant potions no longer affect them, while helpful ones now will. Some scrolls interact with this.",
+  "description.extendedconsumables.pocket_dimension_analyzer": "\u00a7aRight click on a block to check your stomach's pocket dimension. A chat message only seen by you will be sent to tell you how much saturation is left. Used together with the Saturation Overload Potion. Look up \"Minecraft Saturation\" for more info on how this works.",
+  "description.extendedconsumables.radiant_flames": "\u00a7aIgnites all enemies within a 4 (+2 per level) block radius for 3 seconds. Enemies are all monsters or players that you have not become friends with using the Scroll of Friendship. May not interact correctly with other mods. Also, Wandering Traders are hardcoded to be enemies.",
+  "description.extendedconsumables.radiant_regen": "\u00a7aApplies Regeneration I to all non-enemies within a 4 (+2 per level) block radius for 3 seconds. Enemies are all monsters or players that you have not become friends with using the Scroll of Friendship. May not interact correctly with other mods. Also, Wandering Traders are hardcoded to be enemies.",
+  "description.extendedconsumables.radiant_slowness": "\u00a7aApplies Slowness III to all enemies within a 4 (+2 per level) block radius for 3 seconds. Enemies are all monsters or players that you have not become friends with using the Scroll of Friendship. May not interact correctly with other mods. Also, Wandering Traders are hardcoded to be enemies.",
+  "description.extendedconsumables.modifier_placeholder": "\u00a7aFor potions, this is either nothing, glowstone dust (amplifier), redstone dust (duration), or gunpowder (splash). For food, gunpowder is replaced by steak (nourishing).",
+
   "description.warn.extendedconsumables.only_one_level": "\u00a7cCannot be amplified",
   "description.warn.extendedconsumables.cannot_splash": "\u00a7cCannot splash",
 
   "extendedconsumables.info.trucelist.truceIntro": "\u00a78<\u00a7aExtendedConsumables\u00a78> \u00a7eTruces",
   "extendedconsumables.info.trucelist.offline": "\u00a77 - Offline :(",
+  "extendedconsumables.info.pocket_dimension_analyzer.saturationIntro": "\u00a78<\u00a7aExtendedConsumables\u00a78> \u00a7eRemaining Saturation: ",
 
   "modifiers.extendedconsumables.title": "\u00a7eModifiers:",
   "modifiers.extendedconsumables.splash": "\u00a77Splash",

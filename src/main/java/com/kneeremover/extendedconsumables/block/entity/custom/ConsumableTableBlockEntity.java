@@ -82,13 +82,13 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 	}
 
 	@Override
-	public Component getDisplayName() {
+	public @NotNull Component getDisplayName() {
 		return new TextComponent("Consumable Table");
 	}
 
 	@Nullable
 	@Override
-	public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+	public AbstractContainerMenu createMenu(int pContainerId, @NotNull Inventory pPlayerInventory, @NotNull Player pPlayer) {
 		return new ConsumableTableMenu(pContainerId, pPlayerInventory, this, this.data);
 	}
 

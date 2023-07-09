@@ -19,17 +19,9 @@ public class ModItemProperties {
 				return player.getUseItem() != stack ? 0.0F : (float)(stack.getUseDuration() - player.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
-		ItemProperties.register(item, new ResourceLocation("pulling"), (stack, level, player, number) -> {
-			return player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F;
-		});
-		ItemProperties.register(item, new ResourceLocation("firework"), (stack, level, player, number) -> {
-			return !ECCrossbow.getChargedProjectiles(stack).isEmpty() && ECCrossbow.getChargedProjectiles(stack).get(0).getItem() == Items.FIREWORK_ROCKET ? 1.0F : 0.0F;
-		});
-		ItemProperties.register(item, new ResourceLocation("tipped"), (stack, level, player, number) -> {
-			return !ECCrossbow.getChargedProjectiles(stack).isEmpty() && ECCrossbow.getChargedProjectiles(stack).get(0).getItem() == ModItems.TIPPED_BOLT_ITEM.get() ? 1.0F : 0.0F;
-		});
-		ItemProperties.register(item, new ResourceLocation("charged"), (stack, level, player, number) -> {
-			return !ECCrossbow.getChargedProjectiles(stack).isEmpty() ? 1.0F : 0.0F;
-		});
+		ItemProperties.register(item, new ResourceLocation("pulling"), (stack, level, player, number) -> player != null && player.isUsingItem() && player.getUseItem() == stack ? 1.0F : 0.0F);
+		ItemProperties.register(item, new ResourceLocation("firework"), (stack, level, player, number) -> !ECCrossbow.getChargedProjectiles(stack).isEmpty() && ECCrossbow.getChargedProjectiles(stack).get(0).getItem() == Items.FIREWORK_ROCKET ? 1.0F : 0.0F);
+		ItemProperties.register(item, new ResourceLocation("tipped"), (stack, level, player, number) -> !ECCrossbow.getChargedProjectiles(stack).isEmpty() && ECCrossbow.getChargedProjectiles(stack).get(0).getItem() == ModItems.TIPPED_BOLT_ITEM.get() ? 1.0F : 0.0F);
+		ItemProperties.register(item, new ResourceLocation("charged"), (stack, level, player, number) -> !ECCrossbow.getChargedProjectiles(stack).isEmpty() ? 1.0F : 0.0F);
 	}
 }

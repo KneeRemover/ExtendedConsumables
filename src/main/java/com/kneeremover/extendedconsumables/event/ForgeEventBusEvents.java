@@ -3,11 +3,11 @@ package com.kneeremover.extendedconsumables.event;
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.effect.capabilities.PlayerSaturationOverloadProvider;
 import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTrucesProvider;
-import com.kneeremover.extendedconsumables.effect.custom.SaturationOverload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.level.GameRules;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -30,17 +30,15 @@ public class ForgeEventBusEvents {
 	public static void onPlayerCloned(PlayerEvent.Clone event) {
 		if(event.isWasDeath()) {
 			event.getOriginal().reviveCaps();
-			event.getOriginal().getCapability(PlayerSaturationOverloadProvider.PLAYER_SATURATION_OVERLOAD).ifPresent(oldStore -> {
-				event.getEntity().getCapability(PlayerSaturationOverloadProvider.PLAYER_SATURATION_OVERLOAD).ifPresent(newStore -> {
-					newStore.copyFrom(oldStore);
+			event.getOriginal().getCapability(PlayerSaturationOverloadProvider.PLAYER_SATURATION_OVERLOAD).ifPresent(oldStore -> event.getEntity().getCapability(PlayerSaturationOverloadProvider.PLAYER_SATURATION_OVERLOAD).ifPresent(newStore -> {
+				newStore.copyFrom(oldStore);
+				if (!event.getPlayer().getLevel().getGameRules().getRule(GameRules.RULE_KEEPINVENTORY).get()) { // If not keep inventory, zero out extra saturation
 					newStore.zeroOverload();
-				});
-			});
-			event.getOriginal().getCapability(PlayerTrucesProvider.PLAYER_TRUCES).ifPresent(oldStore -> {
-				event.getEntity().getCapability(PlayerTrucesProvider.PLAYER_TRUCES).ifPresent(newStore -> {
-					newStore.copyFrom(oldStore);
-				});
-			});
+				}
+			}));
+			event.getOriginal().getCapability(PlayerTrucesProvider.PLAYER_TRUCES).ifPresent(oldStore -> event.getEntity().getCapability(PlayerTrucesProvider.PLAYER_TRUCES).ifPresent(newStore -> {
+				newStore.copyFrom(oldStore);
+			}));
 			event.getOriginal().invalidateCaps();
 		}
 	}

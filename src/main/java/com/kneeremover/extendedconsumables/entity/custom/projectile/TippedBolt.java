@@ -17,15 +17,19 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class TippedBolt extends AbstractArrow {
+	@SuppressWarnings("unused")
 	private static final int EXPOSED_POTION_DECAY_TIME = 600;
+	@SuppressWarnings("unused")
 	private static final int NO_EFFECT_COLOR = -1;
 	private static final EntityDataAccessor<Integer> ID_EFFECT_COLOR = SynchedEntityData.defineId(TippedBolt.class, EntityDataSerializers.INT);
+	@SuppressWarnings("unused")
 	private static final byte EVENT_POTION_PUFF = 0;
 	private final List<MobEffectInstance> effectInstances = new ArrayList<>();
 	private int[] effects = null;
@@ -111,7 +115,7 @@ public class TippedBolt extends AbstractArrow {
 		if (i != -1 && pParticleAmount > 0) {
 			double d0 = (double) (i >> 16 & 255) / 255.0D;
 			double d1 = (double) (i >> 8 & 255) / 255.0D;
-			double d2 = (double) (i >> 0 & 255) / 255.0D;
+			double d2 = (double) (i & 255) / 255.0D;
 
 			for (int j = 0; j < pParticleAmount; ++j) {
 				this.level.addParticle(ParticleTypes.ENTITY_EFFECT, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), d0, d1, d2);
@@ -129,7 +133,7 @@ public class TippedBolt extends AbstractArrow {
 		this.entityData.set(ID_EFFECT_COLOR, pFixedColor);
 	}
 
-	public void addAdditionalSaveData(CompoundTag pCompound) {
+	public void addAdditionalSaveData(@NotNull CompoundTag pCompound) {
 		super.addAdditionalSaveData(pCompound);
 
 		if (this.fixedColor) {
@@ -151,7 +155,7 @@ public class TippedBolt extends AbstractArrow {
 	/**
 	 * (abstract) Protected helper method to read subclass entity data from NBT.
 	 */
-	public void readAdditionalSaveData(CompoundTag pCompound) {
+	public void readAdditionalSaveData(@NotNull CompoundTag pCompound) {
 		super.readAdditionalSaveData(pCompound);
 		if (pCompound.contains("Color", 99)) {
 			this.setFixedColor(pCompound.getInt("Color"));
@@ -160,7 +164,7 @@ public class TippedBolt extends AbstractArrow {
 		}
 	}
 
-	protected void doPostHurtEffects(LivingEntity pLiving) {
+	protected void doPostHurtEffects(@NotNull LivingEntity pLiving) {
 		super.doPostHurtEffects(pLiving);
 		Entity entity = this.getEffectSource();
 		for (MobEffectInstance mobeffectinstance : effectInstances) {
@@ -175,7 +179,7 @@ public class TippedBolt extends AbstractArrow {
 
 	}
 
-	protected ItemStack getPickupItem() {
+	protected @NotNull ItemStack getPickupItem() {
 		ItemStack itemstack = new ItemStack(ModItems.TIPPED_BOLT_ITEM.get());
 		itemstack.getOrCreateTag().putIntArray("extendedconsumables.effectIDs", effects);
 		itemstack.getOrCreateTag().putIntArray("extendeddconsumables.durations", durations);
@@ -196,7 +200,7 @@ public class TippedBolt extends AbstractArrow {
 			if (i != -1) {
 				double d0 = (double) (i >> 16 & 255) / 255.0D;
 				double d1 = (double) (i >> 8 & 255) / 255.0D;
-				double d2 = (double) (i >> 0 & 255) / 255.0D;
+				double d2 = (double) (i & 255) / 255.0D;
 
 				for (int j = 0; j < 20; ++j) {
 					this.level.addParticle(ParticleTypes.ENTITY_EFFECT, this.getRandomX(0.5D), this.getRandomY(), this.getRandomZ(0.5D), d0, d1, d2);

@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodData;
 import net.minecraft.world.food.FoodProperties;
+import org.jetbrains.annotations.NotNull;
 
 public class SaturationOverload extends MobEffect {
 	public SaturationOverload(MobEffectCategory pCategory, int pColor) {
@@ -17,9 +18,8 @@ public class SaturationOverload extends MobEffect {
 	private boolean lastHeldFood = false;
 
 	@Override
-	public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-		if (pLivingEntity instanceof Player) {
-			Player player = (Player) pLivingEntity;
+	public void applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier) {
+		if (pLivingEntity instanceof Player player) {
 			player.getCapability(PlayerSaturationOverloadProvider.PLAYER_SATURATION_OVERLOAD).ifPresent(sat -> {
 				ExtendedConsumables.LOGGER.info("Overload: " + sat.getOverload());
 				FoodData foodData = player.getFoodData();

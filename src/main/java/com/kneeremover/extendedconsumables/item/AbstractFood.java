@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class GenericFood extends Item {
-	public GenericFood(Properties pProperties) {
-		super(pProperties.tab(CreativeModeTab.TAB_FOOD).food(new FoodProperties.Builder().saturationMod(0).nutrition(0).alwaysEat().build()));
+public abstract class AbstractFood extends Item {
+	public AbstractFood(Properties pProperties) {
+		super(pProperties.tab(ModCreativeModeTabs.FOOD_TAB).food(new FoodProperties.Builder().saturationMod(0).nutrition(0).alwaysEat().build()));
 	}
 
 	public String foodName = "Placeholder";
@@ -32,7 +32,7 @@ public abstract class GenericFood extends Item {
 	public boolean onlyOneLevel = false;
 
 	@Override
-	public SoundEvent getEatingSound() {
+	public @NotNull SoundEvent getEatingSound() {
 		return SoundEvents.GENERIC_EAT;
 	}
 
@@ -50,7 +50,7 @@ public abstract class GenericFood extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+	public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
 		if (Screen.hasShiftDown()) {
 			pTooltipComponents.add(new TranslatableComponent("description.extendedconsumables." + foodName));
 			pTooltipComponents.add(new TextComponent(""));
@@ -68,7 +68,7 @@ public abstract class GenericFood extends Item {
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
+	public @NotNull ItemStack finishUsingItem(@NotNull ItemStack pStack, Level pLevel, @NotNull LivingEntity pLivingEntity) {
 		if (!pLevel.isClientSide) {
 			int nourishing = 0;
 			if (Objects.equals(ModifierHandler.getModifiers(pStack).get(0), "minecraft:cooked_beef")) nourishing++;

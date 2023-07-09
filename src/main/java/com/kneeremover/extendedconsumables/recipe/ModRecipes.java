@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModRecipes {
 	public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, ExtendedConsumables.MOD_ID);
 
+	@SuppressWarnings("unused")
 	public static final RegistryObject<RecipeSerializer<ConsumableTableRecipe>> CONSUMABLE_TABLE_SERIALIZER = SERIALIZERS.register("consumable_crafting", () -> ConsumableTableRecipe.Serializer.INSTANCE);
 
 	public static void register(IEventBus eventBus) {

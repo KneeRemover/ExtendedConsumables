@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class ConsumableTableMenu extends AbstractContainerMenu {
 	private final ConsumableTableBlockEntity blockEntity;
@@ -78,9 +79,9 @@ public class ConsumableTableMenu extends AbstractContainerMenu {
 	private static final int TE_INVENTORY_SLOT_COUNT = 8;  // must be the number of slots you have!
 
 	@Override
-	public ItemStack quickMoveStack(Player playerIn, int index) {
+	public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
 		Slot sourceSlot = slots.get(index);
-		if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+		if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
 		ItemStack sourceStack = sourceSlot.getItem();
 		ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -111,7 +112,7 @@ public class ConsumableTableMenu extends AbstractContainerMenu {
 	}
 
 	@Override
-	public boolean stillValid(Player pPlayer) {
+	public boolean stillValid(@NotNull Player pPlayer) {
 		return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
 				pPlayer, ModBlocks.CONSUMABLE_TABLE.get());
 	}

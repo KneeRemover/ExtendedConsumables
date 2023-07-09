@@ -16,16 +16,18 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 @JeiPlugin
 public class JEIExtendedConsumablesPlugin implements IModPlugin {
-	public static RecipeType<ConsumableTableRecipe> CONSUMABLE_CRAFTING_TYPE = new RecipeType<>(ConsumableTableRecipeCategory.UID, ConsumableTableRecipe.class);
+	public static final RecipeType<ConsumableTableRecipe> CONSUMABLE_CRAFTING_TYPE = new RecipeType<>(ConsumableTableRecipeCategory.UID, ConsumableTableRecipe.class);
 
 	@Override
-	public ResourceLocation getPluginUid() {
+	public @NotNull ResourceLocation getPluginUid() {
 		return new ResourceLocation(ExtendedConsumables.MOD_ID, "jei_plugin");
 	}
 
@@ -42,13 +44,6 @@ public class JEIExtendedConsumablesPlugin implements IModPlugin {
 	@Override
 	public void registerRecipes(IRecipeRegistration registration) {
 		// Add item descriptions
-		registration.addIngredientInfo(ModItems.MODIFIER_PLACEHOLDER.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.modifier_placeholder"));
-		// Potions
-		registration.addIngredientInfo(ModItems.LAST_STAND_POTION.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.last_stand"));
-		registration.addIngredientInfo(ModItems.STEP_HEIGHT_POTION.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.step_height"));
-		registration.addIngredientInfo(ModItems.SATURATION_OVERLOAD_POTION.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.saturation_overload_potion"));
-		// Food
-		registration.addIngredientInfo(ModItems.ENVIRONMENTAL_APPLE.get().getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.environmental_apple"));
 		// Vanilla
 		registration.addIngredientInfo(Items.GUNPOWDER.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.gunpowder"));
 		registration.addIngredientInfo(Items.GLOWSTONE_DUST.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.glowstone"));

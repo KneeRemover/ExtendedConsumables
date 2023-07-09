@@ -9,14 +9,12 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import org.lwjgl.system.CallbackI;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public boolean matches(SimpleContainer pContainer, Level pLevel) {
+	public boolean matches(SimpleContainer pContainer, @NotNull Level pLevel) {
 		List<Integer> recipeItemsList = new LinkedList<>(Arrays.asList(1, 2, 3));
 		List<ItemStack> containedItems = new LinkedList<>(Arrays.asList(pContainer.getItem(1),
 				pContainer.getItem(2), pContainer.getItem(3)));
@@ -67,12 +65,12 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public NonNullList<Ingredient> getIngredients() {
+	public @NotNull NonNullList<Ingredient> getIngredients() {
 		return recipeItems;
 	}
 
 	@Override
-	public ItemStack assemble(SimpleContainer pContainer) {
+	public @NotNull ItemStack assemble(@NotNull SimpleContainer pContainer) {
 		return output;
 	}
 
@@ -82,28 +80,29 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public ItemStack getResultItem() {
+	public @NotNull ItemStack getResultItem() {
 		return output.copy();
 	}
 
 	@Override
-	public ResourceLocation getId() {
+	public @NotNull ResourceLocation getId() {
 		return id;
 	}
 
 	@Override
-	public RecipeSerializer<?> getSerializer() {
+	public @NotNull RecipeSerializer<?> getSerializer() {
 		return Serializer.INSTANCE;
 	}
 
 
+	@SuppressWarnings("SameParameterValue")
 	public static class Serializer implements RecipeSerializer<ConsumableTableRecipe> {
 		public static final Serializer INSTANCE = new Serializer();
 		public static final ResourceLocation ID =
 				new ResourceLocation(ExtendedConsumables.MOD_ID,"consumable_crafting");
 
 		@Override
-		public ConsumableTableRecipe fromJson(ResourceLocation id, JsonObject json) {
+		public @NotNull ConsumableTableRecipe fromJson(@NotNull ResourceLocation id, @NotNull JsonObject json) {
 			ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
 
 			JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
@@ -117,12 +116,10 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 		}
 
 		@Override
-		public ConsumableTableRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+		public ConsumableTableRecipe fromNetwork(@NotNull ResourceLocation id, FriendlyByteBuf buf) {
 			NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
-			for (int i = 0; i < inputs.size(); i++) {
-				inputs.set(i, Ingredient.fromNetwork(buf));
-			}
+			inputs.replaceAll(ignored -> Ingredient.fromNetwork(buf));
 
 			ItemStack output = buf.readItem();
 			return new ConsumableTableRecipe(id, output, inputs);
@@ -160,7 +157,7 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public RecipeType<?> getType() {
+	public @NotNull RecipeType<?> getType() {
 		return Type.INSTANCE;
 	}
 

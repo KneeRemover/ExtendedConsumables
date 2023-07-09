@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 @SuppressWarnings("[removal]")
@@ -36,37 +37,37 @@ public class ConsumableTableRecipeCategory implements IRecipeCategory<Consumable
 	}
 
 	@Override
-	public RecipeType<ConsumableTableRecipe> getRecipeType() {
+	public @NotNull RecipeType<ConsumableTableRecipe> getRecipeType() {
 		return JEIExtendedConsumablesPlugin.CONSUMABLE_CRAFTING_TYPE;
 	}
 
 	@Override
-	public ResourceLocation getUid() {
+	public @NotNull ResourceLocation getUid() {
 		return UID;
 	}
 
 	@Override
-	public Class<? extends ConsumableTableRecipe> getRecipeClass() {
+	public @NotNull Class<? extends ConsumableTableRecipe> getRecipeClass() {
 		return ConsumableTableRecipe.class;
 	}
 
 	@Override
-	public Component getTitle() {
+	public @NotNull Component getTitle() {
 		return new TextComponent("Consumable Crafting");
 	}
 
 	@Override
-	public IDrawable getBackground() {
+	public @NotNull IDrawable getBackground() {
 		return this.background;
 	}
 
 	@Override
-	public IDrawable getIcon() {
+	public @NotNull IDrawable getIcon() {
 		return this.icon;
 	}
 
 	@Override
-	public void setIngredients(ConsumableTableRecipe recipe, IIngredients ingredients) {
+	public void setIngredients(@NotNull ConsumableTableRecipe recipe, @NotNull IIngredients ingredients) {
 		IRecipeCategory.super.setIngredients(recipe, ingredients);
 	}
 

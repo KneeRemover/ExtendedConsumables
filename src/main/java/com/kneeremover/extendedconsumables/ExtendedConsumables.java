@@ -8,6 +8,7 @@ import com.kneeremover.extendedconsumables.entity.renderer.TippedBoltRenderer;
 import com.kneeremover.extendedconsumables.event.ForgeEventBusEvents;
 import com.kneeremover.extendedconsumables.event.ModEventBusEvents;
 import com.kneeremover.extendedconsumables.item.ModItems;
+import com.kneeremover.extendedconsumables.particle.ModParticles;
 import com.kneeremover.extendedconsumables.recipe.ModRecipes;
 import com.kneeremover.extendedconsumables.screen.ConsumableTableScreen;
 import com.kneeremover.extendedconsumables.screen.ModMenuTypes;
@@ -37,14 +38,12 @@ public class ExtendedConsumables {
         eventBus.register(ModEventBusEvents.class);
 
         ModEffects.register(eventBus);
-
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
-
         ModEntities.register(eventBus);
-
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
+        ModParticles.register(eventBus);
 
         ModRecipes.register(eventBus);
 
@@ -55,6 +54,7 @@ public class ExtendedConsumables {
         MinecraftForge.EVENT_BUS.register(ForgeEventBusEvents.class);
     }
 
+    @SuppressWarnings("unused")
     private void clientSetup(final FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.CONSUMABLE_TABLE.get(), RenderType.translucent());
         ModItemProperties.addCustomItemProperties();
@@ -66,6 +66,7 @@ public class ExtendedConsumables {
         MenuScreens.register(ModMenuTypes.CONSUMABLE_TABLE_MENU.get(), ConsumableTableScreen::new);
     }
 
+    @SuppressWarnings({"EmptyMethod", "unused"})
     private void setup(final FMLCommonSetupEvent event) {
     }
 }
