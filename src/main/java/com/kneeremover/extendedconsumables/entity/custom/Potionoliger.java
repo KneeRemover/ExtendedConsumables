@@ -29,7 +29,6 @@ public class Potionoliger extends AbstractIllager implements RangedAttackMob, IA
 //private AnimationFactory factory = new AnimationFactory(this)
 
 private static final EntityDataAccessor<Boolean> DATA_USING_ITEM = SynchedEntityData.defineId(Witch.class, EntityDataSerializers.BOOLEAN);
-
 	public boolean isDrinkingPotion() {
 		return this.getEntityData().get(DATA_USING_ITEM);
 	}

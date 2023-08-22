@@ -31,6 +31,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ExtendedConsumables.MOD_ID)
@@ -57,6 +58,9 @@ public class ExtendedConsumables {
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ForgeEventBusEvents.class);
+        GeckoLib.initialize();
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ExtendedConsumablesCommonConfigs.SPEC, "extendedconsumables-common.toml");
     }
 
     @SuppressWarnings("unused")
