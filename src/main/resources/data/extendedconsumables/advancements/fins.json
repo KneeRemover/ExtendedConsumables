@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:fins_potion"
+    },
+    "title": "Budget dolphin's grace",
+    "description": "Brew a fins potion, an early game potion that buffs your swim speed.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:reach",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:fins_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

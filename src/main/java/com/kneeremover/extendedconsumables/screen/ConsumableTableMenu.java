@@ -1,7 +1,11 @@
 package com.kneeremover.extendedconsumables.screen;
 
+import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.block.ModBlocks;
 import com.kneeremover.extendedconsumables.block.entity.custom.ConsumableTableBlockEntity;
+import com.kneeremover.extendedconsumables.screen.slot.ExtendedBaseSlot;
+import com.kneeremover.extendedconsumables.screen.slot.ExtendedFuelSlot;
+import com.kneeremover.extendedconsumables.screen.slot.ExtendedModifierSlot;
 import com.kneeremover.extendedconsumables.screen.slot.ModResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,7 +24,7 @@ public class ConsumableTableMenu extends AbstractContainerMenu {
 	private final ContainerData data;
 
 	public ConsumableTableMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-		this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+		this(pContainerId, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
 	}
 
 	public ConsumableTableMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -34,13 +38,13 @@ public class ConsumableTableMenu extends AbstractContainerMenu {
 		addPlayerHotbar(inv);
 
 		this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-			this.addSlot(new SlotItemHandler(handler, 0, 78, 43));
+			this.addSlot(new ExtendedBaseSlot(handler, 0, 78, 43));
 			this.addSlot(new SlotItemHandler(handler, 1, 60, 18));
 			this.addSlot(new SlotItemHandler(handler, 2, 78, 18));
 			this.addSlot(new SlotItemHandler(handler, 3, 96, 18));
-			this.addSlot(new SlotItemHandler(handler, 4, 29, 34));
-			this.addSlot(new SlotItemHandler(handler, 5, 29, 52));
-			this.addSlot(new SlotItemHandler(handler, 6, 131, 42));
+			this.addSlot(new ExtendedModifierSlot(handler, 4, 29, 34));
+			this.addSlot(new ExtendedModifierSlot(handler, 5, 29, 52));
+			this.addSlot(new ExtendedFuelSlot(handler, 6, 131, 42));
 			this.addSlot(new ModResultSlot(handler, 7, 104, 64));
 		});
 
@@ -51,11 +55,17 @@ public class ConsumableTableMenu extends AbstractContainerMenu {
 		return data.get(0) > 0;
 	}
 
+	public int getScaledFuel() {
+		int fuel = this.data.get(2);
+		int maxFuel = this.data.get(3);
+		int fuelMeterSize = 14;
+
+		return maxFuel != 0 && fuel != 0 ? fuel * fuelMeterSize / maxFuel : 0;
+	}
 	public int getScaledProgress() {
 		int progress = this.data.get(0);
 		int maxProgress = this.data.get(1);
 		int progressArrowSize = 18;
-
 		return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
 	}
 

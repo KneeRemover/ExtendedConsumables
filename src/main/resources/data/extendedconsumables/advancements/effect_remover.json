@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:effect_remover_potion"
+    },
+    "title": "Definitely not just milk in a bottle",
+    "description": "Brew an effect remover potion. It removes one random effect. Can only remove effects that milk can also remove.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:iron_gun",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:effect_remover_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "extendedconsumables:third_of_an_iron_ingot"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:battle_apple"
+  }
+}

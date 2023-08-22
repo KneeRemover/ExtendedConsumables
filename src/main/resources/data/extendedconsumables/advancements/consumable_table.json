@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:consumable_table"
+    },
+    "title": "Consumable Crafting",
+    "description": "You'll need a special crafting bench to start!",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:extendedconsumables",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:consumable_table"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

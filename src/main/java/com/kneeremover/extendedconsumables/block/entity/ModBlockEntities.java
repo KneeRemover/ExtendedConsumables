@@ -3,6 +3,7 @@ package com.kneeremover.extendedconsumables.block.entity;
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.block.ModBlocks;
 import com.kneeremover.extendedconsumables.block.entity.custom.ConsumableTableBlockEntity;
+import com.kneeremover.extendedconsumables.block.entity.custom.StackCombinerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -14,6 +15,8 @@ public class ModBlockEntities {
 
 	public static final RegistryObject<BlockEntityType<ConsumableTableBlockEntity>> CONSUMABLE_TABLE_BLOCK_ENTITY =
 			BLOCK_ENTITIES.register("consumable_table_block_entity", () -> BlockEntityType.Builder.of(ConsumableTableBlockEntity::new, ModBlocks.CONSUMABLE_TABLE.get()).build(null));
+	public static final RegistryObject<BlockEntityType<StackCombinerBlockEntity>> STACK_COMBINER_BLOCK_ENTITY =
+			BLOCK_ENTITIES.register("stack_combiner_block_entity", () -> BlockEntityType.Builder.of(StackCombinerBlockEntity::new, ModBlocks.STACK_COMBINER.get()).build(null));
 
 	public static void register(IEventBus eventBus) {
 		BLOCK_ENTITIES.register(eventBus);

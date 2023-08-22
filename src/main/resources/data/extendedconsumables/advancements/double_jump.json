@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_double_jump"
+    },
+    "title": "Imagine having to deal with gravity",
+    "description": "Infuse a double jump scroll, a simple, cheap early game scroll that grants double jumps.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:paper",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_double_jump"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

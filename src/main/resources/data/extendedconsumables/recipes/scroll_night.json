@@ -1,0 +1,14 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:scroll_night"
+  }
+}

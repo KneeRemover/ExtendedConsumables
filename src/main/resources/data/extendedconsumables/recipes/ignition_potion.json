@@ -1,0 +1,17 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:flint"
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:ignition_potion"
+  }
+}

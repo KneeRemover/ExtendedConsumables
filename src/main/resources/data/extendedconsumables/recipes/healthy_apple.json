@@ -1,0 +1,17 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:healthy_apple"
+  }
+}

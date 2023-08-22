@@ -1,0 +1,17 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:netherite_block"
+    },
+    {
+      "item": "minecraft:nether_star"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:crash_potion"
+  }
+}

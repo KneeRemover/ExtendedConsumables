@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C Z",
+    " B ",
+    "Z A"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:crossbow"
+    },
+    "B": {
+      "item": "minecraft:glass_bottle"
+    },
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "Z": {
+      "tag": "forge:rods/blaze"
+    }
+  },
+  "result": {
+    "item": "extendedconsumables:ec_crossbow"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:reach_potion"
+    },
+    "title": "Hacker!",
+    "description": "Brew a reach potion, an early game potion that buffs your reach distance.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:step_height",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:reach_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

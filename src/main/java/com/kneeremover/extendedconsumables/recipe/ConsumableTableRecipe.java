@@ -3,20 +3,25 @@ package com.kneeremover.extendedconsumables.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
-import com.kneeremover.extendedconsumables.ModifierHandler;
+import com.kneeremover.extendedconsumables.util.ModifierUtils;
+import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.StackedContents;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.util.RecipeMatcher;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
@@ -31,37 +36,49 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public boolean matches(SimpleContainer pContainer, @NotNull Level pLevel) {
-		List<Integer> recipeItemsList = new LinkedList<>(Arrays.asList(1, 2, 3));
-		List<ItemStack> containedItems = new LinkedList<>(Arrays.asList(pContainer.getItem(1),
-				pContainer.getItem(2), pContainer.getItem(3)));
-		List<Integer> recipeItemsListConsumed = new LinkedList<>();
-		List<ItemStack> containedItemsConsumed = new LinkedList<>();
+	public boolean matches(@NotNull SimpleContainer pContainer, @NotNull Level pLevel) {
+		ItemStack[] types = recipeItems.get(0).getItems();
+		ItemStack[] ing1s = recipeItems.get(1).getItems();
+		ItemStack[] ing2s = recipeItems.get(2).getItems();
+		ItemStack[] ing3s = recipeItems.get(3).getItems();
+		for (int i = 0; i < types.length; i++) {
+			ItemStack type = types[i];
+			ItemStack[] ings = new ItemStack[3];
+			ings[0] = ing1s.length > i ? ing1s[i] : null;
+			ings[1] = ing2s.length > i ? ing2s[i] : null;
+			ings[2] = ing3s.length > i ? ing3s[i] : null;
+			Item containerIng1 = pContainer.getItem(1).getItem();
+			Item containerIng2 = pContainer.getItem(2).getItem();
+			Item containerIng3 = pContainer.getItem(3).getItem();
 
-		// Don't allow modifiers to count for the recipe type. That sentance makes no sense, but its early in the morning and i don't care lol.
-		if (recipeItems.get(0).test(pContainer.getItem(0))) {
-			recipeItemsListConsumed.add(0);
-		}
-		// Loops through each item in the recipe. For each one, loops through each item in the container. If there is a match, removes both the item in the recipe
-		// and the item in the slot from consideration. If every item in the recipe is removed, confirms the recipe.
-		for (Integer target:recipeItemsList) {
-			if (recipeItems.get(target).isEmpty()) { // Ignore empty requirements
-				recipeItemsListConsumed.add(target);
-				continue;
+			int matches = 0;
+
+			if (type.is(pContainer.getItem(0).getItem())) {
+				matches++;
 			}
-			for (ItemStack stack:containedItems) {
-				if (containedItemsConsumed.contains(stack)) { // Skip if the item has already been "consumed"
+
+			for (int j = 0; j < 3; j++) {
+				if (ings[j] == null ? containerIng1 == Items.AIR : ings[j].is(containerIng1)) {
+					matches++;
+					containerIng1 = null;
 					continue;
 				}
-				if (recipeItems.get(target).test(stack)) {
-					containedItemsConsumed.add(stack);
-					recipeItemsListConsumed.add(target);
-					break;
+				if (ings[j] == null ? containerIng2 == Items.AIR : ings[j].is(containerIng2)) {
+					matches++;
+					containerIng2 = null;
+					continue;
+				}
+				if (ings[j] == null ? containerIng3 == Items.AIR : ings[j].is(containerIng3)) {
+					matches++;
+					containerIng3 = null;
 				}
 			}
+			boolean mods = ModifierUtils.isModsValid(pContainer.getItem(0), pContainer.getItem(4), pContainer.getItem(5));
+			if (matches == 4 && mods) {
+				return true;
+			}
 		}
-		boolean mods = ModifierHandler.isModsValid(pContainer.getItem(0), pContainer.getItem(4), pContainer.getItem(5));
-		return recipeItemsListConsumed.size() == 4 && mods;
+		return false;
 	}
 
 	@Override

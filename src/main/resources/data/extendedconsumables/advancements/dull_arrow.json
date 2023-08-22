@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:dull_arrow"
+    },
+    "title": "Duller Arrows",
+    "description": "Craft some dull arrows. These can be made into zero damage tipped bolts for support purposes.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:ec_crossbow",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:dull_arrow"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

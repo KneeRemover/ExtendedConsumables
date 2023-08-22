@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:saturation_overload_potion"
+    },
+    "title": "Bigger stomach",
+    "description": "Brew a saturation overload potion, an advanced utility potion allowing you to eat endlessly.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:aging",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:saturation_overload_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:radiant_slowness_potion"
+    },
+    "title": "Chilly",
+    "description": "Brew a radiant slowness potion, a potion which slows down all \"enemies\" near you.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:ignition",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:radiant_slowness_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

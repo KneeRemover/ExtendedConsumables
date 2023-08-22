@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:radiant_regen_potion"
+    },
+    "title": "Spread the \u00a7mpain\u00a7r love",
+    "description": "Brew a radiant regen potion, a potion which heals all \"friends\" near you.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:radiant_flames",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:radiant_regen_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:redstone"
+    },
+    "title": "Your First Modifier",
+    "description": "Obtain any of the mod's modifiers. Search JEI for \"Valid Modifier\".",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:consumable_table",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "extendedconsumables:valid_potion_modifiers"
+          }
+        ]
+      }
+    }
+  }
+}

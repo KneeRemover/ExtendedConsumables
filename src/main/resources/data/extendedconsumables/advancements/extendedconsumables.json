@@ -1,0 +1,18 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:step_height_potion"
+    },
+    "title": "ExtendedConsumables",
+    "description": "An early to mid game mod centered around consumables.",
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "background": "extendedconsumables:textures/block/dense_glowstone_block.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

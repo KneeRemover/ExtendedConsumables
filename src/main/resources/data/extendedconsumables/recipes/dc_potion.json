@@ -1,0 +1,14 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:netherite_block"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:dc_potion"
+  }
+}

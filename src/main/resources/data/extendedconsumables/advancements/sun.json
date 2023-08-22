@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_sun"
+    },
+    "title": "Rain is annoying",
+    "description": "Infuse a sun scroll, so you can stop listening to rain sounds on loop for 4 hours straight.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:day",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_sun"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

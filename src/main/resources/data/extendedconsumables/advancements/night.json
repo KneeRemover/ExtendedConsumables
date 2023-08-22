@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_night"
+    },
+    "title": "I <3 monsters",
+    "description": "Infuse a night scroll. Why.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:day",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_night"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

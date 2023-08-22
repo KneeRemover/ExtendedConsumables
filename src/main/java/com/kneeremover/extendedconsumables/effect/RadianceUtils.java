@@ -1,6 +1,6 @@
 package com.kneeremover.extendedconsumables.effect;
 
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTruces;
+import com.kneeremover.extendedconsumables.capabilities.PlayerTruces;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;

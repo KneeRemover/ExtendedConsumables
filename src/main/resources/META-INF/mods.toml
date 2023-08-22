@@ -5,7 +5,7 @@ license="GNU GPLv3"
 modId="extendedconsumables" #mandnnatory
 version="${file.jarVersion}" #mandatory
 displayName="Extended Consumables" #mandatory
-credits="Thanks to picklpie and MrFish for helping with textures, and to Kaupenjoe for their amazing tutorials." #optional
+credits="Thanks to picklpie and MrFish for helping with textures, and to Kaupenjoe for their amazing tutorials. From the Minecraft Mod Development server, thanks Maideniles for help with the Potion-Ready Crossbow, and skyjay1 for helping with the Radiant Friendly Damage Link effect." #optional
 authors="picklepie, MrFish, and NullPointerException/KneeRemover" #optional
 description='''Expands upon food and potions, and adds magic scrolls with interesting effects.'''
 #[[dependencies.extendedconsumables]] #optional

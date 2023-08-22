@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:battle_apple"
+    },
+    "title": "Pre battle apples",
+    "description": "\"Grow\" a battle apple that increases your bullying capabilities.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:healthy",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:battle_apple"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

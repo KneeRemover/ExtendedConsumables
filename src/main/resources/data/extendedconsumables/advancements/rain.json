@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_rain"
+    },
+    "title": "/weather rain",
+    "description": "Infuse a rain scroll, so you can torture your friends. Or fish I guess.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:sun",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_rain"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:environmental_apple"
+    },
+    "title": "Don't worry, the buckets aren't consumed.",
+    "description": "\"Grow\" an environmental apple, to protect you from most environmental threats. Monsters still suck though.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:apple",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:environmental_apple"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

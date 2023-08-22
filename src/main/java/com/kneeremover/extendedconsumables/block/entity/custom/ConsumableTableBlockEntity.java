@@ -1,6 +1,8 @@
 package com.kneeremover.extendedconsumables.block.entity.custom;
 
+import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.block.entity.ModBlockEntities;
+import com.kneeremover.extendedconsumables.item.ExtendedRestrictedPotion;
 import com.kneeremover.extendedconsumables.recipe.ConsumableTableRecipe;
 import com.kneeremover.extendedconsumables.screen.ConsumableTableMenu;
 import net.minecraft.core.BlockPos;
@@ -48,6 +50,8 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 	protected final ContainerData data;
 	private int progress = 0;
 	private int maxProgress = 72;
+	private int fuel = 0;
+	private int maxFuel = 0;
 
 	public ConsumableTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(ModBlockEntities.CONSUMABLE_TABLE_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -59,6 +63,10 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 						return ConsumableTableBlockEntity.this.progress;
 					case 1:
 						return ConsumableTableBlockEntity.this.maxProgress;
+					case 2:
+						return ConsumableTableBlockEntity.this.fuel;
+					case 3:
+						return ConsumableTableBlockEntity.this.maxFuel;
 					default:
 						return 0;
 				}
@@ -72,11 +80,17 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 					case 1:
 						ConsumableTableBlockEntity.this.maxProgress = value;
 						break;
+					case 2:
+						ConsumableTableBlockEntity.this.fuel = value;
+						break;
+					case 3:
+						ConsumableTableBlockEntity.this.maxFuel = value;
+						break;
 				}
 			}
 
 			public int getCount() {
-				return 2;
+				return 4;
 			}
 		};
 	}
@@ -118,6 +132,8 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 	protected void saveAdditional(@NotNull CompoundTag tag) {
 		tag.put("inventory", itemHandler.serializeNBT());
 		tag.putInt("consumable_table.progress", progress);
+		tag.putInt("consumable_table.fuel", fuel);
+		tag.putInt("consumable_table.maxFuel", maxFuel);
 		super.saveAdditional(tag);
 	}
 
@@ -126,6 +142,8 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 		super.load(nbt);
 		itemHandler.deserializeNBT(nbt.getCompound("inventory"));
 		progress = nbt.getInt("consumable_table.progress");
+		fuel = nbt.getInt("consumable_table.fuel");
+		maxFuel = nbt.getInt("consumable_table.maxFuel");
 	}
 
 	public void drops() {
@@ -138,6 +156,12 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 	}
 
 	public static void tick(Level pLevel, BlockPos pPos, BlockState pState, ConsumableTableBlockEntity pBlockEntity) {
+		if (pBlockEntity.fuel <= 1) {
+			addFuel(pBlockEntity);
+		}
+		if (pBlockEntity.fuel > 0) { // No integer overflow jank
+			pBlockEntity.fuel--;
+		}
 		if (hasRecipe(pBlockEntity)) {
 			pBlockEntity.progress++;
 			setChanged(pLevel, pPos, pState);
@@ -162,11 +186,36 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 
 		return match.isPresent() && canInsertAmountIntoOutputSlot(inventory)
 				&& canInsertItemIntoOutputSlot(inventory, match.get().getResultItem())
-				&& hasFuel(entity);
+				&& hasFuel(entity)
+				&& isEnabled(match.get().getResultItem());
+	}
+
+	private static boolean isEnabled(ItemStack item) {
+		if (item.getItem() instanceof ExtendedRestrictedPotion arpItem) {
+			return arpItem.config.get();
+		}
+
+		return true;
 	}
 
 	private static boolean hasFuel(ConsumableTableBlockEntity entity) {
-		return net.minecraftforge.common.ForgeHooks.getBurnTime(entity.itemHandler.getStackInSlot(6), RecipeType.SMELTING) >= 1600;
+		return entity.fuel >= 1;
+	}
+
+	public static void addFuel(ConsumableTableBlockEntity entity) {
+		ItemStack fuelSlot = entity.itemHandler.getStackInSlot(6);
+		SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
+		for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
+			inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
+		}
+
+		Optional<ConsumableTableRecipe> match = entity.level.getRecipeManager()
+				.getRecipeFor(ConsumableTableRecipe.Type.INSTANCE, inventory, entity.level);
+		if (fuelSlot.getItem() != Items.AIR && match.isPresent()) {
+			entity.itemHandler.extractItem(6, 1, false);
+			entity.fuel =(int) (net.minecraftforge.common.ForgeHooks.getBurnTime(fuelSlot, RecipeType.SMELTING) * .36 + 10);
+			entity.maxFuel = entity.fuel;
+		}
 	}
 
 	public static void craftItem(ConsumableTableBlockEntity entity) {
@@ -202,19 +251,21 @@ public class ConsumableTableBlockEntity extends BlockEntity implements MenuProvi
 				entity.resetProgress();
 				BlockPos p = entity.getBlockPos();
 				Player player = entity.level.getNearestPlayer(p.getX(), p.getY(), p.getZ(), 10, false);
-				if (player != null) {
+				if (player != null && !level.isClientSide) {
 					player.sendMessage(new TranslatableComponent("extendedconsumables.failed_consumable_craft"), UUID.randomUUID());
 				}
 				return;
 			}
 
 			// Actually expend the items, then place the output and reset the progress
-			entity.itemHandler.extractItem(0, 1, false);
-			entity.itemHandler.extractItem(1, 1, false);
-			entity.itemHandler.extractItem(2, 1, false);
-			entity.itemHandler.extractItem(3, 1, false);
-			entity.itemHandler.extractItem(6, 1, false);
-
+			for (int i = 0; i < 6; i++) { // Check if there is a container here. If there is, "empty" the container. Otherwise, destroy one item from the stack. Do this for every slot from 0 to 5.
+				ItemStack containerItem = entity.itemHandler.getStackInSlot(i).getContainerItem();
+				if (containerItem.getItem() != Items.AIR) {
+					entity.itemHandler.setStackInSlot(i, containerItem);
+				} else {
+					entity.itemHandler.extractItem(i, 1, false);
+				}
+			}
 			entity.itemHandler.setStackInSlot(7, toReturn);
 
 			entity.resetProgress();

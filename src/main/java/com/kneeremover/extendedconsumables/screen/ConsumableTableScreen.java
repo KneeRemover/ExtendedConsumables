@@ -26,6 +26,8 @@ public class ConsumableTableScreen extends AbstractContainerScreen<ConsumableTab
 		int y = (height - imageHeight) / 2;
 
 		this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
+		int fuel = menu.getScaledFuel();
+		blit(pPoseStack, x + 132, y + 27 + 14 - fuel, 176, 15 + 14 - fuel, 14, fuel);
 
 		if (menu.isCrafting()) {
 			blit(pPoseStack, x + 84, y + 61, 176, 0, menu.getScaledProgress(), 15);

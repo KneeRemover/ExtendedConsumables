@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:pocket_dimension_analyzer"
+    },
+    "title": "Where do you think all that food goes?",
+    "description": "Craft a pocket dimension analyzer to allow you to check how much food you have left.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:saturation_overload",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:pocket_dimension_analyzer"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

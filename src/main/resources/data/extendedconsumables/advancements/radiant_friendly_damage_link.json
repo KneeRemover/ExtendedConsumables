@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:radiant_friendly_damage_link_potion"
+    },
+    "title": "Spread the \u00a7mlove\u00a7r pain",
+    "description": "Brew a radiant friendly damage link potion, a potion deals all damage taken to nearby \"friends\".",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:radiant_slowness",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:radiant_friendly_damage_link_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

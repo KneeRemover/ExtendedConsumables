@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "extendedconsumables:block/dense_glowstone_block"
+  }
+}

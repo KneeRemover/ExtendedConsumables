@@ -1,0 +1,14 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "tag": "minecraft:fishes"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:fins_potion"
+  }
+}

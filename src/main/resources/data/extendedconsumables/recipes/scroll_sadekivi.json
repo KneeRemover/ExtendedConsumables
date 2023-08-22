@@ -1,0 +1,17 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "extendedconsumables:iron_pickstaxe"
+    },
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:scroll_sadekivi"
+  }
+}

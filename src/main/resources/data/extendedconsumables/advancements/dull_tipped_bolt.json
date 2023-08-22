@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:dull_tipped_bolt_item"
+    },
+    "title": "Support Specialist",
+    "description": "Make some dull tipped bolts using dull arrows and a splash potion.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:dull_arrow",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:dull_tipped_bolt_item"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

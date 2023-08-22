@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "extendedconsumables:item/third_of_an_iron_ingot"
+  }
+}

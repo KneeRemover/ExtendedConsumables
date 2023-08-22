@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:x_apple"
+    },
+    "title": "Vampires",
+    "description": "\"Grow\" a x apple, a worthless piece of garbage.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:environmental",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:x_apple"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

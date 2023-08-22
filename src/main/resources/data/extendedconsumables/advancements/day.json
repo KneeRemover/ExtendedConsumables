@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_day"
+    },
+    "title": "Beds are overrated",
+    "description": "Infuse a day scroll, for when the rest of the server won't stay in bed.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:paper",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_day"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

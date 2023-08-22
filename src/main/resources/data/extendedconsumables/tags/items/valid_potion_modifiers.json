@@ -4,6 +4,13 @@
     "minecraft:gunpowder",
     "minecraft:glowstone_dust",
     "minecraft:redstone",
+    "minecraft:cooked_beef",
+    "minecraft:blaze_rod",
+    "minecraft:chorus_fruit",
+    "minecraft:popped_chorus_fruit",
+    "minecraft:redstone_block",
+    "minecraft:dragon_breath",
+    "extendedconsumables:dense_glowstone_block",
     "minecraft:air"
   ]
 }

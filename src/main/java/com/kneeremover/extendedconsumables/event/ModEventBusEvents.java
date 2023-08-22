@@ -1,8 +1,10 @@
 package com.kneeremover.extendedconsumables.event;
 
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerSaturationOverload;
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTruces;
+import com.kneeremover.extendedconsumables.capabilities.PlayerSaturationOverload;
+import com.kneeremover.extendedconsumables.capabilities.PlayerTruces;
+import com.kneeremover.extendedconsumables.capabilities.WorldTargetTime;
 import com.kneeremover.extendedconsumables.particle.ModParticles;
+import com.kneeremover.extendedconsumables.particle.custom.RadiantFriendlyDamageLinkParticles;
 import com.kneeremover.extendedconsumables.particle.custom.RadiantRegenParticles;
 import com.kneeremover.extendedconsumables.particle.custom.RadiantSlownessParticles;
 import com.kneeremover.extendedconsumables.recipe.ConsumableTableRecipe;
@@ -24,11 +26,13 @@ public class ModEventBusEvents {
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
 		Minecraft.getInstance().particleEngine.register(ModParticles.RADIANT_REGEN_PARTICLES.get(), RadiantRegenParticles.Provider::new);
 		Minecraft.getInstance().particleEngine.register(ModParticles.RADIANT_SLOWNESS_PARTICLES.get(), RadiantSlownessParticles.Provider::new);
+		Minecraft.getInstance().particleEngine.register(ModParticles.RADIANT_FREINDLY_DAMAGE_LINK_PARTICLES.get(), RadiantFriendlyDamageLinkParticles.Provider::new);
 	}
 
 	@SubscribeEvent
 	public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
 		event.register(PlayerSaturationOverload.class);
 		event.register(PlayerTruces.class);
+		event.register(WorldTargetTime.class);
 	}
 }

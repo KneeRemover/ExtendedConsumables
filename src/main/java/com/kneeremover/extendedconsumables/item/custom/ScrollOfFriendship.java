@@ -1,8 +1,7 @@
 package com.kneeremover.extendedconsumables.item.custom;
 
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTrucesProvider;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
+import com.kneeremover.extendedconsumables.capabilities.PlayerTrucesProvider;
+import com.kneeremover.extendedconsumables.item.ExtendedScroll;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
@@ -11,20 +10,16 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.UUID;
 
 
-public class ScrollOfFriendship extends Item { // The friends we made along the way
-	public ScrollOfFriendship(Properties properties) {
-		super(properties);
+public class ScrollOfFriendship extends ExtendedScroll { // The friends we made along the way
+	public ScrollOfFriendship() {
+		super(false, "scroll_friendship");
 	}
 
 	@Override
@@ -59,15 +54,5 @@ public class ScrollOfFriendship extends Item { // The friends we made along the 
 			});
 		}
 		return InteractionResultHolder.pass(pPlayer.getItemInHand(pHand));
-	}
-
-	@Override
-	public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-		if (Screen.hasShiftDown()) {
-			pTooltipComponents.add(new TranslatableComponent("description.extendedconsumables.scroll_friendship"));
-		} else {
-			pTooltipComponents.add(new TextComponent("\u00A78<\u00A7aSHIFT\u00A78>"));
-		}
-		super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
 	}
 }

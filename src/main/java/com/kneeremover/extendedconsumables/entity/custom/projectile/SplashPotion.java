@@ -1,6 +1,7 @@
 package com.kneeremover.extendedconsumables.entity.custom.projectile;
 
 import com.kneeremover.extendedconsumables.entity.ModEntities;
+import com.kneeremover.extendedconsumables.item.ExtendedPotion;
 import com.kneeremover.extendedconsumables.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffect;
@@ -71,13 +72,19 @@ public class SplashPotion extends ThrowableItemProjectile implements ItemSupplie
 		AABB aabb = this.getBoundingBox().inflate(4.0D, 2.0D, 4.0D);
 		List<LivingEntity> livingEntities = this.level.getEntitiesOfClass(LivingEntity.class, aabb);
 		List<ItemEntity> items = this.level.getEntitiesOfClass(ItemEntity.class, aabb);
-		if (!items.isEmpty()) {
+		if (!items.isEmpty() && !((ExtendedPotion) this.getItem().getItem()).noBolt()) {
 			int affectedItems = 0; // Limit the number of affected stacks to five.
 			for (ItemEntity itementity : items) {
-				if ((itementity.getItem().getItem() == Items.ARROW || itementity.getItem().getItem() == ModItems.TIPPED_BOLT_ITEM.get()) && affectedItems <= (64 * 5)) {
+				boolean isDull = itementity.getItem().getItem() == ModItems.DULL_ARROW.get();
+				if ((itementity.getItem().getItem() == Items.ARROW
+						|| isDull
+						|| itementity.getItem().getItem() == ModItems.DULL_TIPPED_BOLT_ITEM.get()
+						|| itementity.getItem().getItem() == ModItems.TIPPED_BOLT_ITEM.get()) && affectedItems <= (64 * 5)) {
 					ItemStack toreturn;
 					if (itementity.getItem().getItem() == Items.ARROW) {
 						toreturn = new ItemStack(ModItems.TIPPED_BOLT_ITEM.get());
+					} else if (isDull) {
+						toreturn = new ItemStack(ModItems.DULL_TIPPED_BOLT_ITEM.get());
 					} else {
 						toreturn = itementity.getItem();
 					}
@@ -98,7 +105,7 @@ public class SplashPotion extends ThrowableItemProjectile implements ItemSupplie
 
 						idsToReturn[ids.length] = this.mobEffect.getColor();
 						amplifiersToReturn[ids.length] = this.amplifier;
-						durationsToReturn[ids.length] = this.duration;
+						durationsToReturn[ids.length] = isDull ? (int) (this.duration * 1.1) : this.duration;
 
 						tag.putIntArray("extendedconsumables.effectIDs", idsToReturn);
 						tag.putIntArray("extendedconsumables.amplifiers", amplifiersToReturn);

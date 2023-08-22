@@ -1,6 +1,6 @@
 package com.kneeremover.extendedconsumables.effect.custom;
 
-import com.kneeremover.extendedconsumables.entity.DamageSources;
+import com.kneeremover.extendedconsumables.effect.ModEffects;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,8 +14,6 @@ public class LastStand extends MobEffect {
 		super(pCategory, pColor);
 	}
 
-	private boolean isLastTick = false;
-
 	@Override
 	public List<ItemStack> getCurativeItems() {
 		return new ArrayList<>();
@@ -24,19 +22,15 @@ public class LastStand extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
 		pLivingEntity.setInvulnerable(true);
-		if (isLastTick) {
-			pLivingEntity.setInvulnerable(false);
-			pLivingEntity.hurt(DamageSources.TIME_RAN_OUT, Float.MAX_VALUE);
-			this.isLastTick = false;
+
+		if (pLivingEntity.getEffect(ModEffects.LAST_STAND.get()).getDuration() <= 3 && pLivingEntity.getHealth() > pLivingEntity.getMaxHealth() / 2) { // For this line to run, you must have the effect. I'm sure that you won't have the effect right now and itl throw a NPE though.
+			pLivingEntity.setHealth(pLivingEntity.getMaxHealth() / 2);
 		}
 		super.applyEffectTick(pLivingEntity, pAmplifier);
 	}
 
 	@Override
 	public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
-		if (pDuration == 1) {
-			this.isLastTick = true;
-		}
 		return true;
 	}
 }

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:iron_gun_potion"
+    },
+    "title": "Turtle master was taken",
+    "description": "Brew an iron gun potion. Doubled health, but halved damage.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:bottle",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:iron_gun_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

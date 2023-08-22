@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:shattered_defense_potion"
+    },
+    "title": "Resistance * -1",
+    "description": "Brew a shattered defense potion, the opposite of resistance.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:bottle",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:shattered_defense_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

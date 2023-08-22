@@ -18,7 +18,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '0.0.1-1.18.2'
+version = '1.0.0-1.18.2'
 group = 'com.kneeremover.extendedconsumables' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 //noinspection GroovyUnusedAssignment
 archivesBaseName = 'extendedconsumables'
@@ -150,6 +150,7 @@ repositories {  maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'}
 }
 
 dependencies {
@@ -183,7 +184,7 @@ jar {
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : "None",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

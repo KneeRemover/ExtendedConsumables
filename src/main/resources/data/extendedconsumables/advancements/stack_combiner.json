@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:stack_combiner"
+    },
+    "title": "Stack Combiner",
+    "description": "(optional) A convenient table that can merge two stacks if they're misbehaving. Follows all vanilla rules, but uses a slightly different NBT detection system.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:consumable_table",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:stack_combiner"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

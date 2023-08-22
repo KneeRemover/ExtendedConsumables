@@ -1,8 +1,8 @@
 package com.kneeremover.extendedconsumables.entity.custom.projectile;
 
-import com.kneeremover.extendedconsumables.effect.ModEffects;
 import com.kneeremover.extendedconsumables.entity.ModEntities;
 import com.kneeremover.extendedconsumables.item.ModItems;
+import com.kneeremover.extendedconsumables.item.custom.TippedBoltItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -45,15 +45,13 @@ public class TippedBolt extends AbstractArrow {
 		super(ModEntities.TIPPED_BOLT.get(), pShooter, pLevel);
 	}
 
-	public TippedBolt(EntityType<TippedBolt> tippedBoltEntityType, Level level) {
+	public TippedBolt(EntityType<? extends AbstractArrow> tippedBoltEntityType, Level level) {
 		super(tippedBoltEntityType, level);
 	}
 
 	public void setEffectsFromItem(ItemStack pStack) {
-		HashMap<Integer, MobEffect> definedEffects = new HashMap<>();
-		definedEffects.put(ModEffects.LAST_STAND.get().getColor(), ModEffects.LAST_STAND.get());
-		definedEffects.put(ModEffects.STEP_HEIGHT.get().getColor(), ModEffects.STEP_HEIGHT.get());
-		definedEffects.put(ModEffects.SATURATION_OVERLOAD.get().getColor(), ModEffects.SATURATION_OVERLOAD.get());
+		HashMap<Integer, MobEffect> definedEffects = TippedBoltItem.definedEffects;
+
 		int[] effectIDs = pStack.getOrCreateTag().getIntArray("extendedconsumables.effectIDs");
 		int[] durations = pStack.getOrCreateTag().getIntArray("extendedconsumables.durations");
 		int[] amplifiers = pStack.getOrCreateTag().getIntArray("extendedconsumables.amplifiers");

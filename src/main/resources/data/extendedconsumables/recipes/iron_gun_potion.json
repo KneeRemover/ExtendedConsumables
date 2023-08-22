@@ -1,0 +1,17 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:iron_gun_potion"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:last_stand_potion"
+    },
+    "title": "The best defense",
+    "description": "Brew a last stand potion, the ultimate defensive potion. You are FULLY INVINCIBLE for the duration, but die once it runs out and is unaffected by milk.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:effect_remover",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:last_stand_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

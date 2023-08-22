@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "extendedconsumables:block/stack_combiner" },
+    "facing=east": { "model": "extendedconsumables:block/stack_combiner", "y": 90 },
+    "facing=south": { "model": "extendedconsumables:block/stack_combiner", "y": 180 },
+    "facing=west": { "model": "extendedconsumables:block/stack_combiner", "y": 270 }
+  }
+}

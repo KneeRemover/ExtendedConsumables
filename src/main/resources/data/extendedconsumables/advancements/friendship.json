@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_friendship"
+    },
+    "title": "Friendhsip",
+    "description": "Infuse a friendship scroll, a relatively expensive reusable scroll that declares other players as your friend. Definitely not stolen from an amazing game called Noita that you should definitely go check out.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:double_jump",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_friendship"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -48,6 +48,13 @@ public class JEIExtendedConsumablesPlugin implements IModPlugin {
 		registration.addIngredientInfo(Items.GUNPOWDER.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.gunpowder"));
 		registration.addIngredientInfo(Items.GLOWSTONE_DUST.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.glowstone"));
 		registration.addIngredientInfo(Items.REDSTONE.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.redstone"));
+		registration.addIngredientInfo(Items.COOKED_BEEF.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.steak"));
+		registration.addIngredientInfo(Items.REDSTONE_BLOCK.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.rs_block"));
+		registration.addIngredientInfo(Items.BLAZE_ROD.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.blaze_rod"));
+		registration.addIngredientInfo(Items.CHORUS_FRUIT.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.chorus_fruit"));
+		registration.addIngredientInfo(Items.POPPED_CHORUS_FRUIT.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.popped_chorus_fruit"));
+		registration.addIngredientInfo(ModBlocks.DENSE_GLOWSTONE_BLOCK.get().asItem().getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.glowstone_block"));
+		registration.addIngredientInfo(Items.DRAGON_BREATH.getDefaultInstance(), VanillaTypes.ITEM_STACK, new TranslatableComponent("item_description.extendedconsumables.dragons_breath"));
 
 		// Register recipe types
 		RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();

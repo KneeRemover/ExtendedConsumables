@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:healthy_apple"
+    },
+    "title": "An apple a day",
+    "description": "\"Grow\" a healthy apple that acts like real life apples in kids shows.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:apple",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:healthy_apple"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

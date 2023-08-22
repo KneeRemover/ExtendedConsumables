@@ -1,0 +1,17 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "extendedconsumables:wooden_staxe"
+    },
+    {
+      "item": "extendedconsumables:third_of_an_iron_ingot"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:shattered_defense_potion"
+  }
+}

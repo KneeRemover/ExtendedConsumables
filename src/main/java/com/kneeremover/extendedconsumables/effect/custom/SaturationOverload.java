@@ -1,7 +1,7 @@
 package com.kneeremover.extendedconsumables.effect.custom;
 
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerSaturationOverloadProvider;
+import com.kneeremover.extendedconsumables.capabilities.PlayerSaturationOverloadProvider;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;

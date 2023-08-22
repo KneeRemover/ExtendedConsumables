@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:step_height_potion"
+    },
+    "title": "The most basic movement potion",
+    "description": "Brew a step height potion, an incredibly useful but relatively cheap potion that allows you to step up whole blocks (like the horse you murdered for the leather).",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:bottle",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:step_height_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

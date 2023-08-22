@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:tipped_bolt_item"
+    },
+    "title": "Creating Ammo",
+    "description": "Although the potion ready crossbow can shoot regular arrows and fireworks just like a regular crossbow, you'll need to create Tipped Bolts to use it properly. Splash a potion onto up to five stacks of arrows to create some. The five stacks can be split up, it doesn't matter.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:ec_crossbow",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:tipped_bolt_item"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

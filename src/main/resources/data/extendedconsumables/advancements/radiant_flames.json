@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:radiant_flames_potion"
+    },
+    "title": "IT BURNS",
+    "description": "Brew a radiant flames potion, a potion which ignites all \"enemies\" near you.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:radiant_friendly_damage_link",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:radiant_flames_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

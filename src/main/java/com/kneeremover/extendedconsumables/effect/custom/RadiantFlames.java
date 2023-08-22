@@ -1,7 +1,7 @@
 package com.kneeremover.extendedconsumables.effect.custom;
 
+import com.kneeremover.extendedconsumables.capabilities.PlayerTrucesProvider;
 import com.kneeremover.extendedconsumables.effect.RadianceUtils;
-import com.kneeremover.extendedconsumables.effect.capabilities.PlayerTrucesProvider;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffect;

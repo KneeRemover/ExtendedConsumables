@@ -1,0 +1,20 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:lapis_lazuli"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "tag": "forge:ingots/copper"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:scroll_thunder"
+  }
+}

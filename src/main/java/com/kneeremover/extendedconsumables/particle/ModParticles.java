@@ -13,6 +13,7 @@ public class ModParticles {
 
 	public static final RegistryObject<SimpleParticleType> RADIANT_REGEN_PARTICLES = PARTICLE_TYPES.register("radiant_regen_particles", () -> new SimpleParticleType(true));
 	public static final RegistryObject<SimpleParticleType> RADIANT_SLOWNESS_PARTICLES = PARTICLE_TYPES.register("radiant_slowness_particles", () -> new SimpleParticleType(true));
+	public static final RegistryObject<SimpleParticleType> RADIANT_FREINDLY_DAMAGE_LINK_PARTICLES = PARTICLE_TYPES.register("radiant_friendly_damage_link_particles", () -> new SimpleParticleType(true));
 
 	public static void register(IEventBus eventBus) {
 		PARTICLE_TYPES.register(eventBus);

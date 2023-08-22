@@ -25,9 +25,9 @@ public class ModEntities {
 					.sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20)
 					.build(new ResourceLocation(ExtendedConsumables.MOD_ID, "tipped_bolt").toString()));
 
-	public static final RegistryObject<EntityType<Potionoliger>> POTIONOLIGER = ENTITIES.register("potionoliger", () ->
-			EntityType.Builder.<Potionoliger>of(Potionoliger::new, MobCategory.MISC).sized(0.6F, 1.95F).clientTrackingRange(8)
-					.build(new ResourceLocation(ExtendedConsumables.MOD_ID, "potionoliger").toString()));
+//	public static final RegistryObject<EntityType<Potionoliger>> POTIONOLIGER = ENTITIES.register("potionoliger", () ->
+//			EntityType.Builder.<Potionoliger>of(Potionoliger::new, MobCategory.MISC).sized(0.6F, 1.95F).clientTrackingRange(8)
+//					.build(new ResourceLocation(ExtendedConsumables.MOD_ID, "potionoliger").toString()));
 
 	public static void register(IEventBus eventBus) {
 		ENTITIES.register(eventBus);

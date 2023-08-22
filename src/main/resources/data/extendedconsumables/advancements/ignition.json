@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:ignition_potion"
+    },
+    "title": "Better flint and steel",
+    "description": "Brew an ignition potion, an early game potion that deals decent fire damage.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:shattered_defense",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:ignition_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

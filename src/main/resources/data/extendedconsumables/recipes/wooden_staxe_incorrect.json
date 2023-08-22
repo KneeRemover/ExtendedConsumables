@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WW ",
+    "WS ",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "extendedconsumables:advanced_sticks"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "extendedconsumables:wooden_staxe"
+  }
+}

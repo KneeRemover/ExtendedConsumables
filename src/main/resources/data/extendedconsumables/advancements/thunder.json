@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:scroll_thunder"
+    },
+    "title": "Get smite lol",
+    "description": "Infuse a thunder (lightning) scroll, because reasons.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:rain",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:scroll_thunder"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

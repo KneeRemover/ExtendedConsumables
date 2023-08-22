@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "extendedconsumables:aging_potion"
+    },
+    "title": "Probably maybe ethical",
+    "description": "Brew an aging potion, a utility potion that multiplies the aging process for baby animals.",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "extendedconsumables:bottle",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "extendedconsumables:aging_potion"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

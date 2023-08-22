@@ -21,9 +21,12 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-public class Potionoliger extends AbstractIllager implements RangedAttackMob {
-
+public class Potionoliger extends AbstractIllager implements RangedAttackMob, IAnimatable {
+//private AnimationFactory factory = new AnimationFactory(this)
 
 private static final EntityDataAccessor<Boolean> DATA_USING_ITEM = SynchedEntityData.defineId(Witch.class, EntityDataSerializers.BOOLEAN);
 
@@ -68,4 +71,15 @@ private static final EntityDataAccessor<Boolean> DATA_USING_ITEM = SynchedEntity
 	@SuppressWarnings("unused")
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 30).add(Attributes.MOVEMENT_SPEED, 1D);
-}}
+}
+
+	@Override
+	public void registerControllers(AnimationData data) {
+
+	}
+
+	@Override
+	public AnimationFactory getFactory() {
+		return null;
+	}
+}
