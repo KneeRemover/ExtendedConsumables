@@ -4,25 +4,19 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.util.ModifierUtils;
-import it.unimi.dsi.fastutil.ints.IntList;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.util.RecipeMatcher;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	private final ResourceLocation id;
@@ -36,7 +30,7 @@ public class ConsumableTableRecipe implements Recipe<SimpleContainer> {
 	}
 
 	@Override
-	public boolean matches(@NotNull SimpleContainer pContainer, @NotNull Level pLevel) {
+	public boolean matches(@NotNull SimpleContainer pContainer, @NotNull Level pLevel) { // If you read this code 3 times, you might summon the demon of bad programming and perish.
 		ItemStack[] types = recipeItems.get(0).getItems();
 		ItemStack[] ing1s = recipeItems.get(1).getItems();
 		ItemStack[] ing2s = recipeItems.get(2).getItems();

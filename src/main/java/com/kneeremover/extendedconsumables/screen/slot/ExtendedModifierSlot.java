@@ -1,11 +1,8 @@
 package com.kneeremover.extendedconsumables.screen.slot;
 
-import com.kneeremover.extendedconsumables.block.ModBlocks;
-import com.kneeremover.extendedconsumables.item.ModItems;
 import com.kneeremover.extendedconsumables.util.ModTags;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;

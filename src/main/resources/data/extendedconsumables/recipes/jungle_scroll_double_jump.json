@@ -1,0 +1,14 @@
+{
+  "type": "extendedconsumables:consumable_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:jungle_leaves"
+    }
+  ],
+  "output": {
+    "item": "extendedconsumables:scroll_double_jump"
+  }
+}

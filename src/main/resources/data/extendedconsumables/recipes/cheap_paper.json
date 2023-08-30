@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "LLL",
+    "   "
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "minecraft:paper",
+    "count": 16
+  }
+}

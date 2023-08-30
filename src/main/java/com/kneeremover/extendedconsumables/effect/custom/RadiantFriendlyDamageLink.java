@@ -51,7 +51,7 @@ public class RadiantFriendlyDamageLink extends MobEffect {
 				double vz = range * Math.sin(angle);
 				Level level = pLivingEntity.getLevel();
 				if (level instanceof ServerLevel slevel) {
-					slevel.sendParticles(ModParticles.RADIANT_FREINDLY_DAMAGE_LINK_PARTICLES.get(), pLivingEntity.getX() + vx, pLivingEntity.getY(), pLivingEntity.getZ() + vz, 5, 0, 0, 0, 0.03);
+					slevel.sendParticles(ModParticles.RADIANT_FRIENDLY_DAMAGE_LINK_PARTICLES.get(), pLivingEntity.getX() + vx, pLivingEntity.getY(), pLivingEntity.getZ() + vz, 5, 0, 0, 0, 0.03);
 				}
 			}
 
@@ -61,7 +61,7 @@ public class RadiantFriendlyDamageLink extends MobEffect {
 				capability.ifPresent(truces -> {
 					if (!livingEntities.isEmpty()) {
 						for (LivingEntity livingentity : livingEntities) { // Is a player
-							if (!RadianceUtils.targetIsValid(livingentity, truces, pLivingEntity, (int) range) && pLivingEntity != livingentity && damageToDeal > 0 && source != null) { // This only works on friendlies!
+							if (!RadianceUtils.targetIsValid(livingentity, pLivingEntity, (int) range, true) && damageToDeal > 0 && source != null) { // This only works on friendlies!
 								livingentity.hurt(source, damageToDeal); // Java ternary operator
 							}
 						}

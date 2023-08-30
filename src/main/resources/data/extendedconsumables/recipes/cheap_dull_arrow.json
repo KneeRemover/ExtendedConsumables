@@ -3,14 +3,14 @@
   "pattern": [
     "   ",
     " S ",
-    " F "
+    " T "
   ],
   "key": {
     "S": {
       "item": "minecraft:stick"
     },
-    "F": {
-      "item": "minecraft:feather"
+    "T": {
+      "item": "minecraft:string"
     }
   },
   "result": {

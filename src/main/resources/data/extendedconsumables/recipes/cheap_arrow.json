@@ -1,20 +1,23 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "   ",
+    " F ",
     " S ",
-    " F "
+    " T "
   ],
   "key": {
+    "F": {
+      "item": "minecraft:flint"
+    },
     "S": {
       "item": "minecraft:stick"
     },
-    "F": {
-      "item": "minecraft:feather"
+    "T": {
+      "item": "minecraft:string"
     }
   },
   "result": {
-    "item": "extendedconsumables:dull_arrow",
+    "item": "minecraft:arrow",
     "count": 4
   }
 }

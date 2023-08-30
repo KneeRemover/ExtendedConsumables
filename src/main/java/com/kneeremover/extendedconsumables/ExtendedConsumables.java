@@ -16,6 +16,7 @@ import com.kneeremover.extendedconsumables.screen.ConsumableTableScreen;
 import com.kneeremover.extendedconsumables.screen.ModMenuTypes;
 import com.kneeremover.extendedconsumables.screen.StackCombinerScreen;
 import com.kneeremover.extendedconsumables.util.ModItemProperties;
+import com.kneeremover.extendedconsumables.util.TippedUtils;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
@@ -55,6 +57,7 @@ public class ExtendedConsumables {
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::onWorldLoad);
 
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(ForgeEventBusEvents.class);
@@ -80,5 +83,10 @@ public class ExtendedConsumables {
         event.enqueueWork(() -> {
             ModMessages.register();
         });
+    }
+
+    @SuppressWarnings("unused")
+    private void onWorldLoad(final FMLLoadCompleteEvent event) {
+        TippedUtils.defineEffects();
     }
 }

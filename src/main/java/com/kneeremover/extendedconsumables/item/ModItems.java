@@ -3,10 +3,8 @@ package com.kneeremover.extendedconsumables.item;
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.config.ExtendedConsumablesCommonConfigs;
 import com.kneeremover.extendedconsumables.effect.ModEffects;
-import com.kneeremover.extendedconsumables.entity.ModEntities;
 import com.kneeremover.extendedconsumables.item.custom.*;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,7 +29,6 @@ public class ModItems {
 			.setEffect(ModEffects.DC).onlyOneLevel(), ExtendedConsumablesCommonConfigs.INCLUDE_DC_POTION));
 	public static final RegistryObject<Item> CRASH_POTION = ITEMS.register("crash_potion", () -> new ExtendedRestrictedPotion(new ExtendedPotion.EPProperties().setPotName("crash")
 			.setEffect(ModEffects.CRASH).noSplash().onlyOneLevel(), ExtendedConsumablesCommonConfigs.INCLUDE_CRASH_POTION));
-
 	public static final RegistryObject<Item> STEP_HEIGHT_POTION = ITEMS.register("step_height_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("step_height")
 			.setEffect(ModEffects.STEP_HEIGHT)));
 	public static final RegistryObject<Item> REACH_POTION = ITEMS.register("reach_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("increased_reach")
@@ -42,12 +39,10 @@ public class ModItems {
 			.setEffect(ModEffects.SHATTERED_DEFENSE)));
 	public static final RegistryObject<Item> EFFECT_REMOVER_POTION = ITEMS.register("effect_remover_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("effect_remover")
 			.setEffect(ModEffects.EFFECT_REMOVER).unstackable().onlyOneLevel().noBolt()));
-
 	public static final RegistryObject<Item> LAST_STAND_POTION = ITEMS.register("last_stand_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("last_stand")
 			.setEffect(ModEffects.LAST_STAND).noSplash().onlyOneLevel()));
 	public static final RegistryObject<Item> SATURATION_OVERLOAD_POTION = ITEMS.register("saturation_overload_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("saturation_overload")
 			.setEffect(ModEffects.SATURATION_OVERLOAD).noSplash().onlyOneLevel()));
-
 	public static final RegistryObject<Item> RADIANT_FLAMES_POTION = ITEMS.register("radiant_flames_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("radiant_flames")
 			.setEffect(ModEffects.RADIANT_FLAMES).noSplash()));
 	public static final RegistryObject<Item> RADIANT_REGEN_POTION = ITEMS.register("radiant_regen_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties().setPotName("radiant_regen")
@@ -60,6 +55,20 @@ public class ModItems {
 			.setPotName("ignition").setEffect(ModEffects.IGNITION).onlyOneLevel()));
 	public static final RegistryObject<Item> AGING_POTION = ITEMS.register("aging_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
 			.setPotName("aging").setEffect(ModEffects.AGING)));
+	public static final RegistryObject<Item> ATTACK_SPEED_BOOST_POTION = ITEMS.register("attack_speed_boost_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("attack_speed_boost").setEffect(ModEffects.ATTACK_SPEED_BOOST)));
+	public static final RegistryObject<Item> CHAOTIC_TELEPORTATION_POTION = ITEMS.register("chaotic_teleportation_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("chaotic_teleportation").setEffect(ModEffects.CHAOTIC_TELEPORTATION).onlyOneLevel()));
+	public static final RegistryObject<Item> DISARMING_POTION = ITEMS.register("disarming_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("disarming").setEffect(ModEffects.DISARMING).onlyOneLevel()));
+	public static final RegistryObject<Item> DISORIENT_POTION = ITEMS.register("disorient_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("disorient").setEffect(ModEffects.DISORIENT).onlyOneLevel()));
+	public static final RegistryObject<Item> HARD_DAMAGE_POTION = ITEMS.register("hard_damage_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("hard_damage").setEffect(ModEffects.HARD_DAMAGE).onlyOneLevel()));
+	public static final RegistryObject<Item> VIRUS_POTION = ITEMS.register("virus_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("virus").setEffect(ModEffects.RADIANT_VIRUS)));
+	public static final RegistryObject<Item> IMMUNITY_POTION = ITEMS.register("immunity_potion", () -> new ExtendedPotion(new ExtendedPotion.EPProperties()
+			.setPotName("immunity").setEffect(ModEffects.IMMUNE).onlyOneLevel()));
 
 	public static final RegistryObject<Item> ENVIRONMENTAL_APPLE = ITEMS.register("environmental_apple", () -> new EnvironmentalApple(new Item.Properties()));
 	public static final RegistryObject<Item> HEALTHY_APPLE = ITEMS.register("healthy_apple", () -> new HealthyApple(new Item.Properties()));

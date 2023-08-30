@@ -1,6 +1,5 @@
 package com.kneeremover.extendedconsumables.screen;
 
-import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.block.ModBlocks;
 import com.kneeremover.extendedconsumables.block.entity.custom.ConsumableTableBlockEntity;
 import com.kneeremover.extendedconsumables.screen.slot.ExtendedBaseSlot;

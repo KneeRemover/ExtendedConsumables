@@ -4,11 +4,10 @@ import com.kneeremover.extendedconsumables.block.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.GameData;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import static net.minecraft.world.item.Items.*;
 

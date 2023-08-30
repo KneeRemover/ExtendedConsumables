@@ -1,7 +1,6 @@
 package com.kneeremover.extendedconsumables.entity;
 
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
-import com.kneeremover.extendedconsumables.entity.custom.Potionoliger;
 import com.kneeremover.extendedconsumables.entity.custom.projectile.SplashPotion;
 import com.kneeremover.extendedconsumables.entity.custom.projectile.TippedBolt;
 import net.minecraft.resources.ResourceLocation;

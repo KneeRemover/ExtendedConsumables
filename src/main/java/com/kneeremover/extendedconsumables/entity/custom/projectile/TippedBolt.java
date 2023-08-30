@@ -2,7 +2,7 @@ package com.kneeremover.extendedconsumables.entity.custom.projectile;
 
 import com.kneeremover.extendedconsumables.entity.ModEntities;
 import com.kneeremover.extendedconsumables.item.ModItems;
-import com.kneeremover.extendedconsumables.item.custom.TippedBoltItem;
+import com.kneeremover.extendedconsumables.util.TippedUtils;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -50,7 +50,7 @@ public class TippedBolt extends AbstractArrow {
 	}
 
 	public void setEffectsFromItem(ItemStack pStack) {
-		HashMap<Integer, MobEffect> definedEffects = TippedBoltItem.definedEffects;
+		HashMap<Integer, MobEffect> definedEffects = TippedUtils.definedEffects;
 
 		int[] effectIDs = pStack.getOrCreateTag().getIntArray("extendedconsumables.effectIDs");
 		int[] durations = pStack.getOrCreateTag().getIntArray("extendedconsumables.durations");

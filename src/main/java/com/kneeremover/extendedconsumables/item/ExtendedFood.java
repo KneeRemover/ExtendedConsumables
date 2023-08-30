@@ -23,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class ExtendedFood extends Item { // Although this doesn't NEED to be an abstract, it's definitely going to reduce unnecessary size in the item register.
 	public ExtendedFood(Properties pProperties, String foodName, boolean onlyOneLevel, List<MobEffect> effects) {

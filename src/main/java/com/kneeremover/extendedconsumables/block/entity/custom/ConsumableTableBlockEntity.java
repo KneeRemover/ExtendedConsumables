@@ -1,6 +1,5 @@
 package com.kneeremover.extendedconsumables.block.entity.custom;
 
-import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.block.entity.ModBlockEntities;
 import com.kneeremover.extendedconsumables.item.ExtendedRestrictedPotion;
 import com.kneeremover.extendedconsumables.recipe.ConsumableTableRecipe;

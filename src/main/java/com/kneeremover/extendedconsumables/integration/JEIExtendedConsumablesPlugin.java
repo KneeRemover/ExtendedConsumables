@@ -2,7 +2,6 @@ package com.kneeremover.extendedconsumables.integration;
 
 import com.kneeremover.extendedconsumables.ExtendedConsumables;
 import com.kneeremover.extendedconsumables.block.ModBlocks;
-import com.kneeremover.extendedconsumables.item.ModItems;
 import com.kneeremover.extendedconsumables.recipe.ConsumableTableRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
