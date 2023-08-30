@@ -37,7 +37,7 @@ public class ModEffects {
 		if (RadianceUtils.targetIsValid(entityToAffect, entityWithRadiance, range, false)) {
 			entityToAffect.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
 		}
-	}, ModParticles.RADIANT_REGEN_PARTICLES, 15886847, 1));
+	}, ModParticles.RADIANT_SLOWNESS_PARTICLES, 15886847, 1));
 	public static final RegistryObject<MobEffect> FINS = MOB_EFFECTS.register("fins", () -> new Fins(MobEffectCategory.BENEFICIAL,3041184));
 	public static final RegistryObject<MobEffect> IMMUNE = MOB_EFFECTS.register("immune", () -> new HardcodeyEffect(MobEffectCategory.BENEFICIAL,	1893087));
 	public static final RegistryObject<MobEffect> ATTACK_SPEED_BOOST = MOB_EFFECTS.register("attack_speed_boost", () -> new AttackSpeedBoost(MobEffectCategory.BENEFICIAL,14981376));
